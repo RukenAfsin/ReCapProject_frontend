@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Color } from '../../models/color';
+import { ColorService } from '../../services/color.service';
 
 @Component({
   selector: 'app-color',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrl: './color.component.css'
 })
 export class ColorComponent {
+  colors:Color[]=[];
+  dataLoaded=false;
 
-}
+  constructor(private colorService:ColorService){}
+  ngOnInit():void{
+    this.getColors();
+  }
+  getColors(){
+    this.colorService.getColors().subscribe(response=>{
+      this.colors=response.data
+      this.dataLoaded=true;
+    })
+  }
+  }
+

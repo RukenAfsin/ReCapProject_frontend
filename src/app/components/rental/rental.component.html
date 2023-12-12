@@ -3,18 +3,21 @@
   </div>
 <table *ngIf="dataLoaded==true"class="table">
 <thead>
+    <div class="alert alert-success" role="alert">
+       Rented Cars
+      </div>
     <tr>
-        <th>ID</th>
-        <th>Araba ID</th>
-        <th>Müşteri ID</th>
+        <th>Customer Name</th>
+        <th>Daily dailyPrice</th>
+        <th>Car Name</th>
         <th>Kiralama Tarihi</th>
         <th>Teslim Tarihi</th>
     </tr>
 </thead>
 <tr *ngFor="let rental of rentals">
-    <td>{{rental.rentalId}}</td>
-    <td>{{rental.carId}}</td>
-    <td>{{rental.customerId}}</td>
+    <td>{{rental.customerFullName}}</td>
+    <td>{{rental.dailyPrice}}</td>
+    <td>{{rental.modelFullName}}</td>
     <td>{{rental.rentDate}}</td>
     <td>{{rental.returnDate}}</td>
 </tr>

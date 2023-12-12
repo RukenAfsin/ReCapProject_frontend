@@ -3,13 +3,14 @@
   </div>
 <table *ngIf="dataLoaded==true"class="table">
 <thead>
+    <div class="alert alert-warning" role="alert">
+       Brands
+      </div>
     <tr>
-        <th>ID</th>
-        <th>Marka Adı</th>
+        <th>Brands Name</th>
     </tr>
 </thead>
 <tr *ngFor="let brand of brands">
-    <td>{{brand.brandId}}</td>
     <td>{{brand.brandName}}</td>
 </tr>
 </table>
