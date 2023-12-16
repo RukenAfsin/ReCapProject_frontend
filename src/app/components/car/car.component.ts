@@ -32,34 +32,10 @@ export class CarComponent {
       this.dataLoaded=true;
     })
   }
-  getCarsByBrands(brandId: number) {
-    this.carService.getCarsByBrands(brandId).subscribe(
-      response => {
-        if (response) {
-          console.log('Servisden dönen veri:', response);
-          if (response.data) {
-            this.cars = response.data;
-            this.dataLoaded = true;
-          } else {
-            console.error('Veri alınamadı veya boş.');
-          }
-        } else {
-          console.error('Servisten null veya boş bir yanıt alındı.');
-        }
-      },
-      error => {
-        console.error('HTTP isteği sırasında bir hata oluştu:', error);
-      }
-    );
-  }
-  
-  
-  
-  // getCarsByBrands(brandId:number){
-  //   this.carService.getCarsByBrands(brandId).subscribe(response=>{
-  //     this.cars=response.data
-  //     this.dataLoaded=true;
-  //   })
-  // }
-
+  getCarsByBrands(brandId:number){
+   this.carService.getCarsByBrands(brandId).subscribe(response=>{
+     this.cars=response.data
+     this.dataLoaded=true;
+   })
+   }
 }

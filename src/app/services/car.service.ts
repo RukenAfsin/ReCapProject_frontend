@@ -18,7 +18,7 @@ apiUrl="https://localhost:44383/api/"
   }
 
   getCarsByBrands(brandId:number):Observable<ListResponseModel<Car>>{
-    let newPath=this.apiUrl+"cars/getcarbybrands"
+    let newPath=this.apiUrl+"cars/getcarbybrands?brandId="+brandId
     return this.httpClient.get<ListResponseModel<Car>>(newPath)
   }
 }

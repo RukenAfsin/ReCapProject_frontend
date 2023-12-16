@@ -19,7 +19,7 @@ export class RentalService {
   }
   
   getRentalsByCustomer(customerId:number):Observable<ListResponseModel<Rental>>{
-    let newPath=this.apiUrl+"rentals/getcustomer"
+    let newPath=this.apiUrl+"rentals/getcustomer?customerId="+customerId
     return this.httpClient.get<ListResponseModel<Rental>>(newPath)
   }
 }

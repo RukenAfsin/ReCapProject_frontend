@@ -41,6 +41,16 @@ setCurrentBrand(brand:Brand){
     return "list-group-item"
   }
  }
+
+ getAllBrandClass(){
+  if(!this.currentBrand){
+    return "list-group-item active"
+  }
+  else{
+    return "list-group-item"
+  }
+ }
+
 }
 
 

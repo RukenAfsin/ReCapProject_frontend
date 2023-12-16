@@ -2,7 +2,7 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 <ul *ngIf="dataLoaded==true" class="list-group">
-  <li class="list-group-item list-group-item-primary" >All Brands</li>
+  <li [class]="getAllBrandClass()" routerLink="/cars">All Brands</li>
   <li (click)="setCurrentBrand(brand)" 
   routerLink="/cars/brand/{{brand.brandId}}"
   *ngFor="let brand of brands"
@@ -11,3 +11,4 @@
   </li>
 </ul>
 <h5 *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz </h5>
+
