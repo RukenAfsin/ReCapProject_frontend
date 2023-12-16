@@ -1,16 +1,13 @@
 <div *ngIf="dataLoaded==false"class="spinner-border text-danger" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
-<table *ngIf="dataLoaded==true"class="table">
-<thead>
-    <div class="alert alert-warning" role="alert">
-       Brands
-      </div>
-    <tr>
-        <th>Brands Name</th>
-    </tr>
-</thead>
-<tr *ngFor="let brand of brands">
-    <td>{{brand.brandName}}</td>
-</tr>
-</table>
+  <span class="visually-hidden">Loading...</span>
+</div>
+<ul *ngIf="dataLoaded==true" class="list-group">
+  <li class="list-group-item list-group-item-primary" >All Brands</li>
+  <li (click)="setCurrentBrand(brand)" 
+  routerLink="/cars/brand/{{brand.brandId}}"
+  *ngFor="let brand of brands"
+  [class]="getCurrentBrandClass(brand)">
+    {{ brand.brandName }}
+  </li>
+</ul>
+<h5 *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz </h5>

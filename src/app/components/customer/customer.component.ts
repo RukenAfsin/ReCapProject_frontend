@@ -9,6 +9,7 @@ import { CustomerService } from '../../services/customer.service';
 })
 export class CustomerComponent {
 customers:Customer[]=[];
+currentCustomer:Customer;
 dataLoaded=false;
 
 constructor(private customerService:CustomerService){
@@ -23,4 +24,17 @@ getCustomers(){
     this.dataLoaded=true;
   })
 }
+setCurrentCustomer(customer:Customer){
+  this.currentCustomer=customer;
+  this.dataLoaded=true;
+}
+getCurrentCustomerClass(customer:Customer){
+  if(customer==this.currentCustomer){
+    return "list-group-item active"
+  }
+  else{
+    return "list-group-item"
+  } 
+}
+
 }

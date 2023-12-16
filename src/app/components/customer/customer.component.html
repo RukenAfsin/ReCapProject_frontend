@@ -1,18 +1,15 @@
-<div *ngIf="dataLoaded==false"class="alert alert-secondary" role="alert">
+<div *ngIf="dataLoaded === false" class="alert alert-secondary" role="alert">
     <span class="visually-hidden">Loading...</span>
   </div>
-<table *ngIf="dataLoaded==true"class="table">
-<thead>
-    <div class="alert alert-warning" role="alert">
-       Customers Information
-      </div>
-    <tr>
-        <th>Customer Name</th>
-        <th>Customer Company Name</th>
-    </tr>
-</thead>
-<tr *ngFor="let customer of customers">
-    <td>{{customer.customerFullName}}</td>
-    <td>{{customer.companyName}}</td>
-</tr>
-</table>
+  
+  <ul *ngIf="dataLoaded === true" class="list-group">
+    <li class="list-group-item list-group-item-danger">All Customers</li>
+    <li (click)="setCurrentCustomer(customer)"
+    routerLink="rental/getcustomer/{{customer.customerId}}"
+     *ngFor="let customer of customers"
+      [class]="getCurrentCustomerClass(customer)">
+      {{ customer.customerFullName }} / {{ customer.companyName }}
+    </li>
+   
+  </ul>
+  <h5 *ngIf="currentCustomer">{{ currentCustomer.customerFullName }} / {{ currentCustomer.companyName }} seçtiniz </h5>
