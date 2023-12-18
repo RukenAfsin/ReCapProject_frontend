@@ -18,7 +18,7 @@ export class CarComponent {
     this.activatedRoute.params.subscribe(params=>{
       if(params["brandId"])
       {
-        this.getCarsByBrands(params["brandId"])
+        this.getCarsByBrand(params["brandId"])
       }
       else
       {
@@ -32,8 +32,9 @@ export class CarComponent {
       this.dataLoaded=true;
     })
   }
-  getCarsByBrands(brandId:number){
-   this.carService.getCarsByBrands(brandId).subscribe(response=>{
+  getCarsByBrand(brandId:number){
+   this.carService.getCarsByBrand(brandId).subscribe(response=>{
+    console.log(response);
      this.cars=response.data
      this.dataLoaded=true;
    })

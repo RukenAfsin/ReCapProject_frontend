@@ -10,7 +10,7 @@ import { BrandService } from '../../services/brand.service';
 export class BrandComponent {
 brands:Brand[]=[];
 currentBrand:Brand;
-dataLoaded=false;
+
 
 constructor(private brandService:BrandService){
 }
@@ -20,15 +20,16 @@ ngOnInit(): void {
 
 getBrands(){
 this.brandService.getBrands().subscribe(response=>{
+  console.log(response);
   this.brands=response.data
-  this.dataLoaded=true;
+
  })
  } 
 
 
 setCurrentBrand(brand:Brand){
   this.currentBrand=brand;
-  this.dataLoaded=true;
+
  }
 
  getCurrentBrandClass(brand:Brand){
