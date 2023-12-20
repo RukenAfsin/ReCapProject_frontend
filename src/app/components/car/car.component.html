@@ -1,20 +1,33 @@
 <div *ngIf="dataLoaded==false"class="alert alert-primary" role="alert">
     <span class="visually-hidden">Loading...</span>
   </div>
-<table *ngIf="dataLoaded==true"class="table">
+
+  <div class="mb-3">
+    <label for="filterText" class="form-label">Search car</label>
+    <input type="text" class="form-control" [(ngModel)]="filterText" id="filterText" placeholder="enter search phrase">
+  </div>
+<div  *ngIf="filterText"  class="alert alert-success">
+  You searched for {{filterText}}
+</div>
+<table *ngIf="dataLoaded==true"class="table"   style="border-color: brown;" >
 <thead>
-    <div class="alert alert-warning" role="alert">
-       Cars
-      </div>
     <tr>
         <th>Brand ID</th>
+        <th>Car Model</th>
+        <th>Brands Name</th>
+        <th>Color</th>
         <th>Car Description</th>
         <th>Car Daily Price</th>
+        <th>Price With Vat</th>
     </tr>
 </thead>
-<tr *ngFor="let car of cars">
+<tr *ngFor="let car of cars |filterPipe:filterText">
     <td>{{car.brandId}}</td>
-    <td>{{car.description}}</td>
-    <td>{{car.dailyPrice}}</td>
+    <td>{{car.carName}}</td>
+    <td>{{car.brandName}}</td>
+    <td>{{car.colorName}}</td>
+    <td>{{car.description|uppercase}}</td>
+    <td>{{car.dailyPrice|currency}}</td>
+    <td>{{car.dailyPrice |vatAdded:18 |currency}}</td>
 </tr>
 </table>

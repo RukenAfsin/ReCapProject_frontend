@@ -12,8 +12,7 @@ brands:Brand[]=[];
 currentBrand:Brand;
 
 
-constructor(private brandService:BrandService){
-}
+constructor(private brandService:BrandService){}
 ngOnInit(): void {
    this.getBrands();
 }
