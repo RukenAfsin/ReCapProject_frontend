@@ -11,18 +11,18 @@
             <th>Car's Photo</th>
         </tr>
     </thead>
-    <tr *ngFor="let car of carimages |">
-        <td>{{carimages.carId}}</td>
-        <td>{{carimages.carName}}</td>
-        <td>{{carimages.brandName}}</td>
-        <td>{{carimages.colorName}}</td>
-        <td>{{carimages.description|uppercase}}</td>
-        <td>{{carimages.dailyPrice|currency}}</td>
-        <td>{{carimages.dailyPrice |vatAdded:18 |currency}}</td>
+    <tr *ngFor="let car of carImages ">
+        <td>{{carImages.carId}}</td>
+        <td>{{carImages.carName}}</td>
+        <td>{{carImages.brandName}}</td>
+        <td>{{carImages.colorName}}</td>
+        <td>{{carImages.description|uppercase}}</td>
+        <td>{{carImages.dailyPrice|currency}}</td>
+        <td>{{carImages.dailyPrice |vatAdded:18 |currency}}</td>
 
         <td>
-            <img *ngIf="carimages.imagePath" [src]="carimages.imagePath" alt="Car Image" style="width: 100%; max-width: 100px; height: auto;">
-            <span *ngIf="!carimages.imagePath">No Image Available</span>
+            <img *ngIf="carImages.imagePath" [src]="carImages.imagePath" alt="Car Image" style="width: 100%; max-width: 100px; height: auto;">
+            <span *ngIf="!carImages.imagePath">No Image Available</span>
         </td>
     </tr>
     </table>

@@ -9,6 +9,7 @@
 <div  *ngIf="filterText"  class="alert alert-success">
   You searched for {{filterText}}
 </div>
+<div>
 <table *ngIf="dataLoaded==true"class="table"   style="border-color: brown;" >
 <thead>
     <tr>
@@ -23,11 +24,18 @@
 </thead>
 <tr *ngFor="let car of cars |filterPipe:filterText">
     <td>{{car.brandId}}</td>
-    <td>{{car.carName}}</td>
+    <td>{{ car.carName }}</td>   
     <td>{{car.brandName}}</td>
     <td>{{car.colorName}}</td>
     <td>{{car.description|uppercase}}</td>
     <td>{{car.dailyPrice|currency}}</td>
     <td>{{car.dailyPrice |vatAdded:18 |currency}}</td>
+    <button
+    routerLink="/carImages/car/{{car.carId}}"
+    type="button"
+    class="btn btn-outline-success">
+    Details
+  </button>
 </tr>
 </table>
+</div>

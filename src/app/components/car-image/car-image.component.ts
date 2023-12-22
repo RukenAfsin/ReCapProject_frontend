@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class CarImageComponent {
 carImages:CarImage[]=[];
+baseUrl="https://localhost:44383/uploads/images/";
 
 constructor(private carimageService:CarImageService, private activatedRoute:ActivatedRoute ){}
 
