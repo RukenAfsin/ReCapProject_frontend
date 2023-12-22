@@ -1,0 +1,28 @@
+<table *ngIf="dataLoaded==true"class="table"   style="border-color: brown;" >
+    <thead>
+        <tr>
+            <th>Car ID</th>
+            <th>Car Model</th>
+            <th>Brands Name</th>
+            <th>Color</th>
+            <th>Car Description</th>
+            <th>Car Daily Price</th>
+            <th>Price With Vat</th>
+            <th>Car's Photo</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let car of carimages |">
+        <td>{{carimages.carId}}</td>
+        <td>{{carimages.carName}}</td>
+        <td>{{carimages.brandName}}</td>
+        <td>{{carimages.colorName}}</td>
+        <td>{{carimages.description|uppercase}}</td>
+        <td>{{carimages.dailyPrice|currency}}</td>
+        <td>{{carimages.dailyPrice |vatAdded:18 |currency}}</td>
+
+        <td>
+            <img *ngIf="carimages.imagePath" [src]="carimages.imagePath" alt="Car Image" style="width: 100%; max-width: 100px; height: auto;">
+            <span *ngIf="!carimages.imagePath">No Image Available</span>
+        </td>
+    </tr>
+    </table>
