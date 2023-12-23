@@ -9,6 +9,24 @@
 <div  *ngIf="filterText"  class="alert alert-success">
   You searched for {{filterText}}
 </div>
+
+<div class="row">
+  <div class="col-md-4">
+    <select [(ngModel)]="brandFilter" class="form-select" aria-label="Choose brand">
+      <option value="0" >Choose brand</option>
+      <option [value]="brand.brandId" *ngFor="let brand of brands" >{{brand.brandName}}</option>
+    </select>
+  </div>
+<div class="col-md-4">
+<select [(ngModel)]="colorFilter" class="form-select" aria-label="Choose color">
+  <option value="0" >Choose color</option>
+  <option [value]="color.colorId" *ngFor="let color of colors" >{{color.colorName}}</option>
+</select>
+</div>
+<div class="col-md-3">
+  <button routerLink="/cars/color/{{colorFilter}}/brand/{{brandFilter}}" style="width: 100%;" class=" btn btn-outline-dark" type="button"> filter</button>
+</div>
+</div>
 <div>
 <table *ngIf="dataLoaded==true"class="table"   style="border-color: brown;" >
 <thead>

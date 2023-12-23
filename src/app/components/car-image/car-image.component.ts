@@ -12,7 +12,9 @@ import { Observable } from 'rxjs';
 })
 export class CarImageComponent {
 carImages:CarImage[]=[];
-baseUrl="https://localhost:44383/uploads/images/";
+dataLoaded=false;
+baseUrl = "https://localhost:44383/Uploads/Images";
+
 
 constructor(private carimageService:CarImageService, private activatedRoute:ActivatedRoute ){}
 
@@ -29,6 +31,7 @@ this.activatedRoute.params.subscribe(params=>{
 getAll(){
   this.carimageService.getAll().subscribe(response=>{
   this.carImages=response.data
+  this.dataLoaded=true;
   })
 }
 
@@ -36,6 +39,7 @@ getAll(){
 getCarImage(carId:number){
   this.carimageService.getCarImage(carId).subscribe(response=>{
   this.carImages=response.data;
+  this.dataLoaded=true;
   })
 }
 
