@@ -8,4 +8,5 @@ export interface Car {
     description:string;
     dailyPrice:number;
     Year:number;
+    imagePath :string;
 }

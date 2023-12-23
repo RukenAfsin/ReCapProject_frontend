@@ -6,6 +6,7 @@ import { Brand } from '../../models/brand';
 import { BrandService } from '../../services/brand.service';
 import { Color } from '../../models/color';
 import { ColorService } from '../../services/color.service';
+import { CarImageService } from '../../services/car-image.service';
 
 @Component({
   selector: 'app-car',
@@ -19,13 +20,16 @@ export class CarComponent {
   colors:Color[]=[];
   colorFilter:number=0;
   brandFilter:number=0;
+  imageOfPath:string;
+  baseUrl = "https://localhost:44383/Uploads/Images/";
   filterText="";
 
 
   constructor(private carService:CarService, 
     private activatedRoute:ActivatedRoute, 
     private brandService:BrandService,
-    private colorService:ColorService ){}
+    private colorService:ColorService,
+    private carImageService:CarImageService ){}
 
   ngOnInit():void{
     this.getBrands();
@@ -96,5 +100,14 @@ export class CarComponent {
         this.cars = response.data;
       });
   }
-  
+
+  image(carId:number){
+   this.carImageService.getCarImage(carId).subscribe(response=>{
+      const imagePath=response.data[0].imagePath
+     this.imageOfPath= this.baseUrl+imagePath;
+      console.log(this.imageOfPath)
+     })
+    return this.imageOfPath
+    
+   }
 }
