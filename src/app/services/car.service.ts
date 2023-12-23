@@ -27,4 +27,9 @@ apiUrl="https://localhost:44383/api/"
     let newPath = this.apiUrl+"cars/getbycolor?colorId="+colorId
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
+
+  getCarDetailByColorAndBrand(colorId:number, brandId:number){
+    let newPath=this.apiUrl+"cars/getcarbycolorandbrand?colorId="+colorId + "&brandId=" +brandId;
+    return this.httpClient.get<ListResponseModel<Car>>(newPath);
+  }
 }
