@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Rental } from '../../models/rental';
 import { RentalService } from '../../services/rental.service';
 import { ActivatedRoute } from '@angular/router';
+import { Car } from '../../models/car';
+import { CarService } from '../../services/car.service';
 
 
 @Component({
@@ -11,12 +13,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RentalComponent {
   rentals:Rental[]=[];
-  dataLoaded=false;
+  carFilter:number=0;
+  cars:Car[]=[];
   
   
-  constructor(private rentalService:RentalService, private activatedRoute:ActivatedRoute){
+  constructor(private rentalService:RentalService, 
+    private carService:CarService,
+    private activatedRoute:ActivatedRoute){
   }
   ngOnInit(): void {
+    this.getCars()
     this.activatedRoute.params.subscribe(params=>{
       if(params["customerId"])
       {
@@ -31,16 +37,31 @@ export class RentalComponent {
   getRentals(){
   this.rentalService.getRentals().subscribe(response=>{
     this.rentals=response.data
-    this.dataLoaded=true;
    })
    } 
    
    getRentalsByCustomerId(customerId:number){
     this.rentalService.getRentalsByCustomer(customerId).subscribe(response=>{
       this.rentals=response.data
-    this.dataLoaded=true;
     })
    }
+
+   checkRental(entity:Rental){
+    this.rentalService.checkRental(entity).subscribe(response=>{
+      this.rentals=response.data
+    })
+   }
+  
+   getCars(){
+    this.carService.getCars().subscribe(response=>{
+      this.cars=response.data
+    })
+   }
+
+   getSelectedCar(carId: number): boolean {
+    console.log();
+    return this.carFilter === carId;
+  }
 
   }
   

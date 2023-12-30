@@ -1,7 +1,38 @@
-<div *ngIf="dataLoaded==false"class="spinner-border text-success" role="status">
+<!-- <div *ngIf="dataLoaded==false"class="spinner-border text-success" role="status">
     <span class="visually-hidden">Loading...</span>
+  </div> -->
+
+ <div class="row">
+    <div class="col-md-4">
+    <select [(ngModel)]="carFilter" class="form-select" aria-label="Please choose the car that you want to rent">
+        <option value="0">Please choose the car that you want to rent </option>
+        <option [value] ="car.carId" *ngFor="let car of cars"> {{car.carName}}</option>
+    </select>
+</div>
+<div class="col-md-8">
+    <h2>Rentals</h2>
+    <ul *ngIf="rentals.length > 0; else noRentals">
+      <li *ngFor="let rental of rentals">
+        <span> Rent Date: {{ rental.rentDate | date: 'short' }} | Return Date: {{ rental.returnDate | date: 'short' }}</span>
+      </li>
+    </ul>
+    <ng-template #noRentals>
+      <p>No rentals found.</p>
+    </ng-template>
   </div>
-<table *ngIf="dataLoaded==true"class="table">
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <table *ngIf="dataLoaded==true"class="table">
 <thead>
     <div class="alert alert-success" role="alert">
        Rented Cars
@@ -25,4 +56,4 @@
     <td>{{rental.rentDate}}</td>
     <td>{{rental.returnDate}}</td>
 </tr>
-</table>
+</table> -->

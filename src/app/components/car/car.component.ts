@@ -23,6 +23,7 @@ export class CarComponent {
   imageOfPath:string;
   baseUrl = "https://localhost:44383/Uploads/Images/";
   filterText="";
+  filterColorText="";
 
 
   constructor(private carService:CarService, 
@@ -96,8 +97,8 @@ export class CarComponent {
   getCarDetailByColorAndBrand(colorId:number, brandId:number){
     this.carService.getCarDetailByColorAndBrand(colorId, brandId)
       .subscribe((response) => {
-        console.log(response)
         this.cars = response.data;
+        console.log(response)
       });
   }
 
@@ -107,7 +108,6 @@ export class CarComponent {
      this.imageOfPath= this.baseUrl+imagePath;
       console.log(this.imageOfPath)
      })
-    return this.imageOfPath
-    
+    return this.imageOfPath 
    }
 }

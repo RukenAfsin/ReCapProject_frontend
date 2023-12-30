@@ -1,15 +1,20 @@
 <div *ngIf="dataLoaded==false"class="alert alert-primary" role="alert">
     <span class="visually-hidden">Loading...</span>
   </div>
-
-  <div class="mb-3">
-    <label for="filterText" class="form-label">Search car</label>
-    <input type="text" class="form-control" [(ngModel)]="filterText" id="filterText" placeholder="enter search phrase">
+  <div class="row">
+  <div class="col-md-6">
+    <label for="filterText" class="form-label">Search Car</label>
+    <input type="text" class="form-control" [(ngModel)]="filterText" id="filterText" placeholder="Enter search phrase">
   </div>
-<div  *ngIf="filterText"  class="alert alert-success">
-  You searched for {{filterText}}
+  <div class="col-md-6">
+    <label for="filterColorText" class="form-label">Search by Color</label>
+    <input type="text" class="form-control" [(ngModel)]="filterColorText" id="filterColorText" placeholder="Enter color">
+  </div>
 </div>
-
+  <div *ngIf="(filterText !== '' || filterColorText !== '')" class="alert alert-success">
+    You searched for {{ filterText || filterColorText }}
+  </div>
+<br/>
 <div class="row">
   <div class="col-md-4">
     <select [(ngModel)]="brandFilter" class="form-select" aria-label="Choose brand">
@@ -24,42 +29,12 @@
 </select>
 </div>
 <div class="col-md-3">
-  <button routerLink="/cars/color/{{colorFilter}}/brand/{{brandFilter}}" style="width: 100%;" class=" btn btn-outline-dark" type="button"> filter</button>
+  <button routerLink="/cars/color/{{colorFilter}}/brand/{{brandFilter}}" style="width: 100%;" class=" btn btn-outline-dark" type="button">filter</button></div>
 </div>
-</div>
-<!-- <div>
-<table *ngIf="dataLoaded==true"class="table"   style="border-color: brown;" >
-<thead>
-    <tr>
-        <th>Brand ID</th>
-        <th>Car Model</th>
-        <th>Brands Name</th>
-        <th>Color</th>
-        <th>Car Description</th>
-        <th>Car Daily Price</th>
-        <th>Price With Vat</th>
-    </tr>
-</thead>
-<tr *ngFor="let car of cars |filterPipe:filterText">
-    <td>{{car.brandId}}</td>
-    <td>{{ car.carName }}</td>   
-    <td>{{car.brandName}}</td>
-    <td>{{car.colorName}}</td>
-    <td>{{car.description|uppercase}}</td>
-    <td>{{car.dailyPrice|currency}}</td>
-    <td>{{car.dailyPrice |vatAdded:18 |currency}}</td>
-    <button
-    routerLink="/carImages/car/{{car.carId}}"
-    type="button"
-    class="btn btn-outline-success">
-    Details
-  </button>
-</tr>
-</table>
-</div> -->
 <div class="row mt-4" style="margin-left: 1%;">
 
-  <div *ngFor="let car of cars |filterPipe:filterText"  class="card mt-2 mr-2"
+
+  <div *ngFor="let car of cars | filterPipe: filterText : filterColorText" class="card mt-2 mr-2"
      style="width: 18rem;margin-right: 10px;">
 
 
@@ -70,7 +45,6 @@
 
     <div class="card-body">
       <h5 class="card-title">{{ car.carName }}</h5>
-
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Car Model: {{ car.carName }}</li>
@@ -84,9 +58,8 @@
     <div class="card-body">
       <div class="row">
         <button type="button" 
-          class="btn btn-outline-success" routerLink="/carImages/car/{{car.carId}}" >Details</button>
-
-      </div>
+          class="btn btn-outline-success" routerLink="/carImages/car/{{car.carId}}">Details</button>
+      </div>   
     </div>
   </div>
 </div>

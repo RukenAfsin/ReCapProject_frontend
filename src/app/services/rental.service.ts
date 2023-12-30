@@ -21,4 +21,10 @@ export class RentalService {
     let newPath=this.apiUrl+"rentals/getcustomer?customerId="+customerId
     return this.httpClient.get<ListResponseModel<Rental>>(newPath)
   }
+
+  checkRental(entity: Rental): Observable<ListResponseModel<Rental>> {
+    let newPath = this.apiUrl + "rentals/checkrental";
+    return this.httpClient.post<ListResponseModel<Rental>>(newPath, entity);
+  }
+  
 }

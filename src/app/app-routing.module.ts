@@ -9,7 +9,8 @@ const routes: Routes = [
 {path:"cars", component:CarComponent },
 {path:"cars/brand/:brandId", component:CarComponent},
 {path:"cars/color/:colorId", component:CarComponent},
-{path:"rentals/customer/:customerId", component:RentalComponent},
+{path:"rentals", component:RentalComponent},
+{path:"rentals/car/:carId", component:RentalComponent},
 {path:"carImages/car/:carId", component:CarImageComponent},
 {path:"cars/color/:colorId/brand/:brandId",component:CarComponent}
 ];

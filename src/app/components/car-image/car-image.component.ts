@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ListResponseModel } from '../../models/listResponseModel';
 import { Observable } from 'rxjs';
 
+
 @Component({
   selector: 'app-car-image',
   templateUrl: './car-image.component.html',
@@ -16,7 +17,8 @@ dataLoaded=false;
 baseUrl = "https://localhost:44383/Uploads/Images";
 
 
-constructor(private carimageService:CarImageService, private activatedRoute:ActivatedRoute ){}
+constructor(private carimageService:CarImageService,
+   private activatedRoute:ActivatedRoute ){}
 
 ngOnInit():void{
 this.activatedRoute.params.subscribe(params=>{
@@ -42,5 +44,6 @@ getCarImage(carId:number){
   this.dataLoaded=true;
   })
 }
+
 
 }

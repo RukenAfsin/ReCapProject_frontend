@@ -32,4 +32,6 @@ apiUrl="https://localhost:44383/api/"
     let newPath=this.apiUrl+"cars/getcarbycolorandbrand?colorId="+colorId + "&brandId=" +brandId;
     return this.httpClient.get<ListResponseModel<Car>>(newPath);
   }
+
+  
 }

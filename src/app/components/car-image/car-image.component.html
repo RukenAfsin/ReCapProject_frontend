@@ -3,8 +3,6 @@
         <tr>
             <th>Car ID</th>
             <th>Car Model</th>
-            <th>Brands Name</th>
-            <th>Color</th>
             <th>Car Description</th>
             <th>Car Daily Price</th>
             <th>Price With Vat</th>
@@ -14,15 +12,20 @@
     <tr *ngFor="let car of carImages ">
         <td>{{car.carId}}</td>
         <td>{{car.carName}}</td>
-        <td>{{car.brandName}}</td>
-        <td>{{car.colorName}}</td>
         <td>{{car.description|uppercase}}</td>
         <td>{{car.dailyPrice|currency}}</td>
         <td>{{car.dailyPrice |vatAdded:18 |currency}}</td>
-
         <td>
             <img *ngIf="car.imagePath" [src]="baseUrl + car.imagePath" alt="Car Image" style="width: 100%; max-width: 100px; height: auto;">
             <span *ngIf="!car.imagePath">No Image Available</span>
         </td>
     </tr>
     </table>
+    <!-- <select [(ngModel)]="customerFilter" class="form-select" aria-label="Choose Customer">
+        <option value="0" >Choose customer</option>
+        <option [value]="customer.customerId" *ngFor="let customer of customers" >{{customer.customerFullName}}</option>
+      </select> -->
+    <div class="row">
+        <button type="button" 
+          class="btn btn-outline-success" routerLink="/rentals">Rent A Car</button>
+      </div>
