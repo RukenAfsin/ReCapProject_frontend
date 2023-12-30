@@ -8,15 +8,19 @@ import { Car } from '../models/car';
 })
 export class FilterPipePipe implements PipeTransform {
   transform(value: Car[], filterText: string, filterColorText: string): Car[] {
+    if (!value) {
+      return []; 
+    }
+  
     filterText = filterText ? filterText.toLowerCase() : '';
     filterColorText = filterColorText ? filterColorText.toLowerCase() : '';
-
+  
     return value.filter((c: Car) => {   
       const brandMatch = c.brandName.toLowerCase().includes(filterText);
       const colorMatch = c.colorName.toLowerCase().includes(filterColorText);
-
-      // İsterseniz sadece biri eşleşse de yeterlidir, ya da her ikisi de eşleşmeli
+  
       return (filterText === '' || brandMatch) && (filterColorText === '' || colorMatch);
     });
   }
+  
 }

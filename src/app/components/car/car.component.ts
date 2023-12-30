@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Car } from '../../models/car';
 import { CarService } from '../../services/car.service';
 import { ActivatedRoute } from '@angular/router';
@@ -30,7 +30,7 @@ export class CarComponent {
     private activatedRoute:ActivatedRoute, 
     private brandService:BrandService,
     private colorService:ColorService,
-    private carImageService:CarImageService ){}
+    private carImageService:CarImageService,){}
 
   ngOnInit():void{
     this.getBrands();
@@ -97,6 +97,7 @@ export class CarComponent {
   getCarDetailByColorAndBrand(colorId:number, brandId:number){
     this.carService.getCarDetailByColorAndBrand(colorId, brandId)
       .subscribe((response) => {
+        console.log(response)
         this.cars = response.data;
         console.log(response)
       });

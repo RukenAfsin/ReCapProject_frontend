@@ -1,13 +1,14 @@
 <div *ngIf="dataLoaded==false"class="alert alert-primary" role="alert">
     <span class="visually-hidden">Loading...</span>
+    Loading data, please wait...
   </div>
   <div class="row">
   <div class="col-md-6">
-    <label for="filterText" class="form-label">Search Car</label>
+    <label for="filterText" class="form-label">Search By Car</label>
     <input type="text" class="form-control" [(ngModel)]="filterText" id="filterText" placeholder="Enter search phrase">
   </div>
   <div class="col-md-6">
-    <label for="filterColorText" class="form-label">Search by Color</label>
+    <label for="filterColorText" class="form-label">Search By Color</label>
     <input type="text" class="form-control" [(ngModel)]="filterColorText" id="filterColorText" placeholder="Enter color">
   </div>
 </div>
@@ -29,7 +30,8 @@
 </select>
 </div>
 <div class="col-md-3">
-  <button routerLink="/cars/color/{{colorFilter}}/brand/{{brandFilter}}" style="width: 100%;" class=" btn btn-outline-dark" type="button">filter</button></div>
+  <button routerLink="/cars/color/{{colorFilter}}/brand/{{brandFilter}}" style="width: 100%;" class=" btn btn-outline-dark" type="button">filter</button>
+</div>
 </div>
 <div class="row mt-4" style="margin-left: 1%;">
 
