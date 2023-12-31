@@ -18,13 +18,21 @@ export class RentalComponent {
   carFilter:number=0;
   customerFilter:number=0;
   cars:Car[]=[];
-  customers:Customer[]=[];
+  customers:Customer[]=[]; 
+  rentalData: Rental;
   
   
   constructor(private rentalService:RentalService, 
     private carService:CarService,
     private customerService:CustomerService,
     private activatedRoute:ActivatedRoute){
+      this.rentalData = {
+        carId: 0,
+        customerId: 0,
+        rentDate: new Date(),
+        returnDate: undefined,
+      } as Rental;
+      
   }
   ngOnInit(): void {
     this.getCars()
@@ -52,11 +60,12 @@ export class RentalComponent {
     })
    }
 
-   checkRental(rental:Rental){
-    this.rentalService.checkRental(rental).subscribe(response=>{
-      this.rentals=response.data
-    })
-   }
+   checkRental(rental: Rental) {
+    this.rentalService.checkRental(rental).subscribe((response) => {
+      console.log()
+      this.rentals = response.data;
+    });
+  }
   
    getCars(){
     this.carService.getCars().subscribe(response=>{

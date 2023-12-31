@@ -22,9 +22,9 @@ export class RentalService {
     return this.httpClient.get<ListResponseModel<Rental>>(newPath)
   }
 
-  checkRental(entity: Rental): Observable<ListResponseModel<Rental>> {
+  checkRental(rental: Rental): Observable<ListResponseModel<Rental>> {
     let newPath = this.apiUrl + "rentals/checkrental";
-    return this.httpClient.post<ListResponseModel<Rental>>(newPath, entity);
+    return this.httpClient.post<ListResponseModel<Rental>>(newPath, rental);
   }
   
 }

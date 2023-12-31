@@ -48,11 +48,13 @@
       </form>
     </div>
     <br/>
-    <div class="card-footer">     
-      <button class="btn btn-fill btn-outline-success" style="margin-left: 700px;">
+    <div class="card-footer">
+      <button data-bs-dismiss="modal" (click)="checkRental(rentalData)" class="btn btn-fill btn-outline-success" 
+      routerLink="/cars" style="margin-left: 700px;">
         Click for Payment
       </button>
     </div>
+    
   <!-- <div class="card-footer">     
     <button data-bs-dismiss="modal" (click)="checkRental()" class="btn btn-fill btn-outline-success" >
       Ödemeye Geç
