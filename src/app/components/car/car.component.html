@@ -1,49 +1,96 @@
-<div *ngIf="dataLoaded==false"class="alert alert-primary" role="alert">
-    <span class="visually-hidden">Loading...</span>
-    Loading data, please wait...
-  </div>
-  <div class="row">
+<div *ngIf="dataLoaded == false" class="alert alert-primary" role="alert">
+  <span class="visually-hidden">Loading...</span>
+  Loading data, please wait...
+</div>
+<div class="row">
   <div class="col-md-6">
     <label for="filterText" class="form-label">Search By Car</label>
-    <input type="text" class="form-control" [(ngModel)]="filterText" id="filterText" placeholder="Enter search phrase">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="filterText"
+      id="filterText"
+      placeholder="Enter search phrase"
+    />
   </div>
   <div class="col-md-6">
     <label for="filterColorText" class="form-label">Search By Color</label>
-    <input type="text" class="form-control" [(ngModel)]="filterColorText" id="filterColorText" placeholder="Enter color">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="filterColorText"
+      id="filterColorText"
+      placeholder="Enter color"
+    />
   </div>
 </div>
-  <div *ngIf="(filterText !== '' || filterColorText !== '')" class="alert alert-success">
-    You searched for {{ filterText || filterColorText }}
-  </div>
-<br/>
+<div
+  *ngIf="filterText !== '' || filterColorText !== ''"
+  class="alert alert-success"
+>
+  You searched for {{ filterText || filterColorText }}
+</div>
+<br />
 <div class="row">
   <div class="col-md-4">
-    <select [(ngModel)]="brandFilter" class="form-select" aria-label="Choose brand">
-      <option value="0" >Choose brand</option>
-      <option [value]="brand.brandId" *ngFor="let brand of brands" >{{brand.brandName}}</option>
+    <select
+      [(ngModel)]="brandFilter"
+      class="form-select"
+      aria-label="Choose brand"
+    >
+      <option value="0">Choose brand</option>
+      <option [value]="brand.brandId" *ngFor="let brand of brands">
+        {{ brand.brandName }}
+      </option>
     </select>
   </div>
-<div class="col-md-4">
-<select [(ngModel)]="colorFilter" class="form-select" aria-label="Choose color">
-  <option value="0" >Choose color</option>
-  <option [value]="color.colorId" *ngFor="let color of colors" >{{color.colorName}}</option>
-</select>
+  <div class="col-md-4">
+    <select
+      [(ngModel)]="colorFilter"
+      class="form-select"
+      aria-label="Choose color"
+    >
+      <option value="0">Choose color</option>
+      <option [value]="color.colorId" *ngFor="let color of colors">
+        {{ color.colorName }}
+      </option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <button
+      routerLink="/cars/color/{{ colorFilter }}/brand/{{ brandFilter }}"
+      style="width: 100%"
+      class="btn btn-outline-dark"
+      type="button"
+    >
+      filter
+    </button>
+  </div>
 </div>
-<div class="col-md-3">
-  <button routerLink="/cars/color/{{colorFilter}}/brand/{{brandFilter}}" style="width: 100%;" class=" btn btn-outline-dark" type="button">filter</button>
-</div>
-</div>
-<div class="row mt-4" style="margin-left: 1%;">
-
-
-  <div *ngFor="let car of cars | filterPipe: filterText : filterColorText" class="card mt-2 mr-2"
-     style="width: 18rem;margin-right: 10px;">
-
-
-  <img *ngIf="car.imagePath" [src]="baseUrl + 'Images/' + car.imagePath" class="card-img-top"
-   style="object-fit: cover;" width="100" height="50%" alt="...">
-    <img *ngIf="!car.imagePath" [src]="baseUrl + 'DefaultImage.png'" class="card-img-top" 
-    style="object-fit: cover;" width="100" height="50%" alt="...">
+<div class="row mt-4" style="margin-left: 1%">
+  <div
+    *ngFor="let car of cars | filterPipe : filterText : filterColorText"
+    class="card mt-2 mr-2"
+    style="width: 18rem; margin-right: 10px"
+  >
+    <img
+      *ngIf="car.imagePath"
+      [src]="baseUrl+car.imagePath"
+      class="card-img-top"
+      style="object-fit: cover"
+      width="100"
+      height="100%"
+      alt="..."
+    />
+    <img
+      *ngIf="!car.imagePath"
+      [src]="baseUrl + 'DefaultImage.png'"
+      class="card-img-top"
+      style="object-fit: cover"
+      width="100"
+      height="100%"
+      alt="..."
+    />
 
     <div class="card-body">
       <h5 class="card-title">{{ car.carName }}</h5>
@@ -51,17 +98,25 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Car Model: {{ car.carName }}</li>
       <li class="list-group-item">Brands Name: {{ car.brandName }}</li>
-      <li class="list-group-item">Car Description: {{ car.description}}</li>
-      <li class="list-group-item">Color: {{ car.colorName }} </li>
-      <li class="list-group-item">Car Daily Price: {{car.dailyPrice|currency}}</li>
-      <li class="list-group-item">Price With Vat: {{car.dailyPrice |vatAdded:18 |currency}}</li>
-
+      <li class="list-group-item">Car Description: {{ car.description }}</li>
+      <li class="list-group-item">Color: {{ car.colorName }}</li>
+      <li class="list-group-item">
+        Car Daily Price: {{ car.dailyPrice | currency }}
+      </li>
+      <li class="list-group-item">
+        Price With Vat: {{ car.dailyPrice | vatAdded : 18 | currency }}
+      </li>
     </ul>
     <div class="card-body">
       <div class="row">
-        <button type="button" 
-          class="btn btn-outline-success" routerLink="/carImages/car/{{car.carId}}">Details</button>
-      </div>   
+        <button
+          type="button"
+          class="btn btn-outline-success"
+          routerLink="/carImages/car/{{ car.carId }}"
+        >
+          Details
+        </button>
+      </div>
     </div>
   </div>
 </div>
