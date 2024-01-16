@@ -1,4 +1,10 @@
-# RentACarProject
+# Rent A Car Project - Angular
+This project is developed using Angular for a car rental system. The project provides a platform where customers can explore vehicles, make reservations, and complete rental transactions.
+
+## Technologies and Tools
+
+- **Angular:** A modern and powerful web application framework.
+- **[Project Backend](<(https://github.com/RukenAfsin/ReCapProject_N_tier_Layer.git)>):** GitHub repository containing backend code for the project.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
 
