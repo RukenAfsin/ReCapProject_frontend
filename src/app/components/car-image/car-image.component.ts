@@ -4,6 +4,7 @@ import { CarImageService } from '../../services/car-image.service';
 import { ActivatedRoute } from '@angular/router';
 import { ListResponseModel } from '../../models/listResponseModel';
 import { Observable } from 'rxjs';
+import { Car } from '../../models/car';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class CarImageComponent {
 carImages:CarImage[]=[];
+car:Car[]=[];
 dataLoaded=false;
 baseUrl = "https://localhost:44383/Uploads/Images";
 

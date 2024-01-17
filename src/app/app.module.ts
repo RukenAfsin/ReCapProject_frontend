@@ -16,6 +16,7 @@ import { CarImageComponent } from './components/car-image/car-image.component';
 
 import { VatAddedPipe } from './pipes/vat-added.pipe';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
     VatAddedPipe,
     FilterPipePipe,
     CarImageComponent,
+    PaymentComponent,
   ],
   imports: [
     BrowserModule,

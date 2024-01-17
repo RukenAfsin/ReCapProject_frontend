@@ -4,7 +4,7 @@
    routerLink="/cars">All Colors</li>
   <li (click)="setCurrentColor(color)" 
   routerLink="/cars/color/{{color.colorId}}"
-  *ngFor="let color of colors "
+  *ngFor="let color of colors"
   [class]="getCurrentColorClass(color)"> 
     {{ color.colorName }}
   </li>

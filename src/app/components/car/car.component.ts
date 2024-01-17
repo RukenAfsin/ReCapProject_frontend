@@ -15,7 +15,8 @@ import { CarImageService } from '../../services/car-image.service';
 })
 export class CarComponent {
   cars:Car[]=[];
-  dataLoaded=false;
+  currentCar:Car;
+  // dataLoaded=false;
   brands: Brand[] = [];
   colors:Color[]=[];
   colorFilter:number=0;
@@ -52,7 +53,7 @@ export class CarComponent {
   getCars(){
     this.carService.getCars().subscribe(response=>{
       this.cars=response.data
-      this.dataLoaded=true;
+      // this.dataLoaded=true;
     })
   }
 
@@ -73,14 +74,14 @@ export class CarComponent {
   getCarsByBrand(brandId:number){
    this.carService.getCarsByBrand(brandId).subscribe(response=>{
      this.cars=response.data
-     this.dataLoaded=true;
+    //  this.dataLoaded=true;
    })
    }
    getCarsByColor(colorId:number){
     this.carService.getCarsByColor(colorId).subscribe(response=>{
       this.cars=response.data
       console.log(response);
-      this.dataLoaded=true;
+      // this.dataLoaded=true;
     })
    }
 
@@ -110,5 +111,10 @@ export class CarComponent {
       console.log(this.imageOfPath)
      })
     return this.imageOfPath 
+   }
+
+
+   setCurrentCar(car:Car){
+    this.currentCar=car;
    }
 }

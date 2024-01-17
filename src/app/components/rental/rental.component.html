@@ -1,61 +1,55 @@
 <div class="container">
- <div class="row">
+  <div class="row">
     <select [(ngModel)]="carFilter" class="form-select" aria-label="Please choose the car that you want to rent">
-        <option value="0">Please choose the car that you want to rent. </option>
-        <option [value] ="car.carId" *ngFor="let car of cars"> {{car.carName}}</option>
+      <option value="0">Please choose the car that you want to rent. </option>
+      <option [value]="car.carId" *ngFor="let car of cars"> {{car.carName}}</option>
     </select>
+  </div>
 </div>
+
+<br />
+
+<div class="container">
+  <div class="row">
+    <select [(ngModel)]="customerFilter" class="form-select" aria-label="Who want to rent this car?">
+      <option value="0">Who want to rent this car?</option>
+      <option [value]="customer.customerId" *ngFor="let customer of customers">{{customer.customerFullName}}</option>
+    </select>
+  </div>
 </div>
 
-   <br/>
-
-    <div class="container">
-      <div class="row">
-        <select  [(ngModel)]="customerFilter" class="form-select" aria-label="Who want to rent this car?">
-          <option value="0">Who want to rent this car?</option>
-          <option [value]="customer.customerId" *ngFor="let customer of customers">{{customer.customerFullName}}</option>
-      </select>      
- </div>
-    </div>
-
-    <br/> 
+<br />
 <div class="card-body">
-  <form >
+  <form>
     <div class="mb-3">
       <label for="rentDate">Rent Date</label>
       <div class="form-group">
-        <input
-          type="date"         
-          class="form-control"
-          placeholder="Rent Date"/>
+        <input type="date" class="form-control" placeholder="Rent Date" />
       </div>
     </div>
-    </form>
-  </div>
-  <br/> 
+  </form>
+</div>
+<br />
 
-  <div class="card-body">
-    <form >
-      <div class="mb-3">
-        <label for="returnDate">Return Date</label>
-        <div class="form-group">
-          <input
-            type="date"           
-            class="form-control"
-            placeholder="Return Date"/>
-        </div>
+<div class="card-body">
+  <form>
+    <div class="mb-3">
+      <label for="returnDate">Return Date</label>
+      <div class="form-group">
+        <input type="date" class="form-control" placeholder="Return Date" />
       </div>
-      </form>
     </div>
-    <br/>
-    <div class="card-footer">
-      <button data-bs-dismiss="modal" (click)="checkRental(rentalData)" class="btn btn-fill btn-outline-success" 
-      routerLink="/cars" style="margin-left: 700px;">
-        Click for Payment
-      </button>
-    </div>
-    
-  <!-- <div class="card-footer">     
+  </form>
+</div>
+<br />
+<div class="card-footer">
+  <button data-bs-dismiss="modal" (click)="checkRental(rentalData)" class="btn btn-fill btn-outline-success"
+    routerLink="/payments" style="margin-left: 700px;">
+    Click for Payment
+  </button>
+</div>
+
+<!-- <div class="card-footer">     
     <button data-bs-dismiss="modal" (click)="checkRental()" class="btn btn-fill btn-outline-success" >
       Ödemeye Geç
     </button>

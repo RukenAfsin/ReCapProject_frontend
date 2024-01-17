@@ -1,7 +1,7 @@
-<div *ngIf="dataLoaded == false" class="alert alert-primary" role="alert">
+<!-- <div *ngIf="dataLoaded == false" class="alert alert-primary" role="alert">
   <span class="visually-hidden">Loading...</span>
   Loading data, please wait...
-</div>
+</div> -->
 <div class="row">
   <div class="col-md-6">
     <label for="filterText" class="form-label">Search By Car</label>
@@ -91,7 +91,6 @@
       height="100%"
       alt="..."
     />
-
     <div class="card-body">
       <h5 class="card-title">{{ car.carName }}</h5>
     </div>
@@ -112,7 +111,8 @@
         <button
           type="button"
           class="btn btn-outline-success"
-          routerLink="/carImages/car/{{ car.carId }}"
+          (click)="setCurrentCar(car)"         
+          routerLink="/carImages/car/{{car.carId}}"
         >
           Details
         </button>
