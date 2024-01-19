@@ -1,22 +1,38 @@
 <div class="container">
+    <br>
+    <br>
     <div class="row">
-        <div class="col-md-4 mb-4">
+        <div class="col-md-6 mb-6">
             <label style="font-weight: bold">Card Owner</label>
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Enters The Card Owner's Name" />
             </div>
         </div>
-
-        <div class="col-md-6 mb-6">
-            <label for="cardNo" style="font-weight: bold">Card No</label>
+    </div>
+    <div class="col-md-6 mb-6">
+        <label for="cardNo" style="font-weight: bold">Card No</label>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Please Enter 16 Digit Card's Number" />
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1 mb-1">
+            <label style="font-weight: bold">CVV</label>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Please Enter 16 Digit Card's Number" />
+                <input type="text" class="form-control" />
+            </div>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label style="font-weight: bold">Expiry Date</label>
+            <div class="form-group">
+                <input type="month" class="form-control" />
             </div>
         </div>
     </div>
-    
-      
-      
-      
+    <br>
+    <div style="text-align:left;">
+        <button type="button" class="btn btn-outline-success" routerLink="">Pay</button>
+    </div>
 
 </div>
