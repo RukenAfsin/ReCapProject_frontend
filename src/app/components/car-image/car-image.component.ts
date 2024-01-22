@@ -6,6 +6,7 @@ import { ListResponseModel } from '../../models/listResponseModel';
 import { Observable } from 'rxjs';
 import { Car } from '../../models/car';
 import { CarService } from '../../services/car.service';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -22,6 +23,7 @@ baseUrl = "https://localhost:44383/Uploads/Images/";
 
 constructor(private carImageService:CarImageService,
   private carService:CarService,
+  private location:Location,
    private activatedRoute:ActivatedRoute ){}
 
 ngOnInit():void{
@@ -57,5 +59,8 @@ getCarImage(carId:number){
   })
 }
 
+goBack(): void {
+  this.location.back();
+}
 
 }

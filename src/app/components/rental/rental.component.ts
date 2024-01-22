@@ -6,6 +6,9 @@ import { Car } from '../../models/car';
 import { CarService } from '../../services/car.service';
 import { Customer } from '../../models/customer';
 import { CustomerService } from '../../services/customer.service';
+import { CarImageService } from '../../services/car-image.service';
+import { CarImage } from '../../models/carImage';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -21,9 +24,11 @@ export class RentalComponent {
   customers:Customer[]=[]; 
   rentalData: Rental;
   
+  
   constructor(private rentalService:RentalService, 
     private carService:CarService,
     private customerService:CustomerService,
+    private location: Location,
     private activatedRoute:ActivatedRoute){
       this.rentalData = {
         carId: 0,
@@ -88,6 +93,11 @@ export class RentalComponent {
     console.log();
     return this.customerFilter === customerId;
   }
+
+  goBack(): void {
+    this.location.back();
+  }
+  
 
   }
   

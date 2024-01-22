@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Payment } from '../../models/payment';
 import { PaymentService } from '../../services/payment.service';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-payment',
@@ -11,7 +13,9 @@ export class PaymentComponent {
   payments:Payment[]=[];
 
 
-  constructor(private paymentService:PaymentService){}
+  constructor(private paymentService:PaymentService,
+    private location:Location,
+    private activatedRoute:ActivatedRoute){}
   ngOnInit():void{
 
   }
@@ -22,4 +26,9 @@ export class PaymentComponent {
       this.payments=response.data;
     })
   }
+
+  goBack(): void {
+    this.location.back();
+  }
+  
 }
