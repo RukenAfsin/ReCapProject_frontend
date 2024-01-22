@@ -16,12 +16,8 @@
     <td>{{ car.dailyPrice | currency }}</td>
     <td>{{ car.dailyPrice | vatAdded : 18 | currency }}</td>
     <td>
-      <img
-        *ngIf="car.imagePath"
-        [src]="baseUrl+car.imagePath"
-        alt="Car Image"
-        style="width: 100%; max-width: 100px; height: auto"
-      />
+      <img *ngIf="car.imagePath" [src]="baseUrl+car.imagePath" alt="Car Image"
+        style="width: 100%; max-width: 100px; height: auto" />
       <span *ngIf="!car.imagePath">No Image Available</span>
     </td>
   </tr>

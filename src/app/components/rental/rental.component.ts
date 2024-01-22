@@ -21,7 +21,6 @@ export class RentalComponent {
   customers:Customer[]=[]; 
   rentalData: Rental;
   
-  
   constructor(private rentalService:RentalService, 
     private carService:CarService,
     private customerService:CustomerService,
@@ -35,6 +34,7 @@ export class RentalComponent {
       
   }
   ngOnInit(): void {
+    
     this.getCars()
     this.getCustomers()
     this.activatedRoute.params.subscribe(params=>{

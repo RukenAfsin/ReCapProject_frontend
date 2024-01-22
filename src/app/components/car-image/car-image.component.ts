@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ListResponseModel } from '../../models/listResponseModel';
 import { Observable } from 'rxjs';
 import { Car } from '../../models/car';
+import { CarService } from '../../services/car.service';
 
 
 @Component({
@@ -14,34 +15,43 @@ import { Car } from '../../models/car';
 })
 export class CarImageComponent {
 carImages:CarImage[]=[];
-car:Car[]=[];
+cars:Car[]=[];
 dataLoaded=false;
-baseUrl = "https://localhost:44383/Uploads/Images";
+baseUrl = "https://localhost:44383/Uploads/Images/";
 
 
-constructor(private carimageService:CarImageService,
+constructor(private carImageService:CarImageService,
+  private carService:CarService,
    private activatedRoute:ActivatedRoute ){}
 
 ngOnInit():void{
 this.activatedRoute.params.subscribe(params=>{
   if(params["carId"])
   {
-    this.getCarImage(params["carId"])
+    this.getCarImage(params["carId"]);
+    // this.getById(params["carId"]);
   }
   this.getAll()
 })
 }
 
 getAll(){
-  this.carimageService.getAll().subscribe(response=>{
+  this.carImageService.getAll().subscribe(response=>{
   this.carImages=response.data
   this.dataLoaded=true;
   })
 }
 
+// getById(carId:number){
+//   this.carService
+//   .getById(carId)
+//   .subscribe((response)=>{
+//     this.cars=response.data;
+//   })
+// }
 
 getCarImage(carId:number){
-  this.carimageService.getCarImage(carId).subscribe(response=>{
+  this.carImageService.getCarImage(carId).subscribe(response=>{
   this.carImages=response.data;
   this.dataLoaded=true;
   })
