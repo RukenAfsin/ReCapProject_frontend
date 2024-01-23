@@ -1,47 +1,53 @@
-<div class="container">
-    <br>
-    <br>
-    <div class="row">
-        <div class="col-md-6 mb-6">
-            <label style="font-weight: bold">Card Owner</label>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Enters The Card Owner's Name" />
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="title">Make your payment</h5>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="paymentAddForm">
+                    <div class="mb-3">
+                        <label for="customerId" style="font-weight: bold;">Card Owner</label>
+                        <div class="form-group">
+                            <input type="number" id="customerId" formControlName="customerId" class="form-control"
+                                placeholder="Enters The Card Owner's Name" />
+                        </div>
+                    </div>                 
+                    <div class="mb-3">
+                    <label for="cardNo" style="font-weight: bold;">Card No</label>
+                    <div class="form-group">
+                        <input type="number" id="cardNo" formControlName="cardNo" class="form-control"
+                            placeholder="Please Enter 16 Digit Card's Number" />
+                    </div>
+                </div>
+                    <div class="mb-3">
+                        <label for="cvv" style="font-weight:bold;">CVV</label>
+                        <div class="form-group">
+                            <input type="number" id="cvv" formControlName="cvv" class="form-control" placeholder="CVV" />
+                        </div>               
+                </div>
+                <div class="mb-3">
+                    <label for="expiryMonth" style="font-weight: bold;">Expiry Month</label>
+                    <div class="form-group">
+                        <input type="number" id="expiryMonth" formControlName="expiryMonth" class="form-control"
+                            placeholder="Expiry Month" />
+                    </div>
+                </div>
+                   <div class="mb-3">
+                    <label for="expiryYear" style="font-weight: bold;">Expiry Year</label>
+                    <div class="form-group">
+                        <input type="number" id=" expiryYear" formControlName=" expiryYear" class="form-control"
+                            placeholder=" Expiry Year" />
+                    </div>
+                   </div>                   
+                </form>
+            </div>
+            <div class="card-footer">
+                <div>
+                 <button data-bs-dismiss="modal" class="btn btn-fill btn-outline-dark" style="width: 70px" (click)="goBack()">Back</button>
+                <button class="btn btn-fill btn-primary" >Payment</button>           
+               </div>
             </div>
         </div>
     </div>
-    <br>
-    <div class="col-md-6 mb-6">
-        <label for="cardNo" style="font-weight: bold">Card No</label>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Please Enter 16 Digit Card's Number" />
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-md-1 mb-1">
-            <label style="font-weight: bold">CVV</label>
-            <div class="form-group">
-                <input type="text" class="form-control" />
-            </div>
-        </div>
-        <div class="col-md-2 mb-2">
-            <label style="font-weight: bold">Expiry Date</label>
-            <div class="form-group">
-                <input type="month" class="form-control" />
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="card-footer">
-        <div class="row">
-          <div class="col-md-1 mb-1">
-            <button data-bs-dismiss="modal" class="btn btn-fill btn-outline-dark" style="width: 70px" (click)="goBack()">
-              Back
-            </button>
-          </div>
-          <div class="col-md-8 mb-8">
-            <button type="button" class="btn btn-outline-success" routerLink="" style="width: 150px;">Pay</button>
-        </div>
-        </div>
-      </div>
 </div>

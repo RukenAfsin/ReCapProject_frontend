@@ -6,8 +6,7 @@ import { Car } from '../../models/car';
 import { CarService } from '../../services/car.service';
 import { Customer } from '../../models/customer';
 import { CustomerService } from '../../services/customer.service';
-import { CarImageService } from '../../services/car-image.service';
-import { CarImage } from '../../models/carImage';
+import {FormGroup, FormBuilder, FormControl,Validators} from "@angular/forms"
 import { Location } from '@angular/common';
 
 
@@ -67,7 +66,7 @@ export class RentalComponent {
 
    checkRental(rental: Rental) {
     this.rentalService.checkRental(rental).subscribe((response) => {
-      console.log()
+      console.log("directed to payment page")
       this.rentals = response.data;
     });
   }
