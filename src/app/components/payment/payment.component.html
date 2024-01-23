@@ -36,7 +36,7 @@
                    <div class="mb-3">
                     <label for="expiryYear" style="font-weight: bold;">Expiry Year</label>
                     <div class="form-group">
-                        <input type="number" id=" expiryYear" formControlName=" expiryYear" class="form-control"
+                        <input type="number" id=" expiryYear" formControlName="expiryYear" class="form-control"
                             placeholder=" Expiry Year" />
                     </div>
                    </div>                   
@@ -45,7 +45,7 @@
             <div class="card-footer">
                 <div>
                  <button data-bs-dismiss="modal" class="btn btn-fill btn-outline-dark" style="width: 70px" (click)="goBack()">Back</button>
-                <button class="btn btn-fill btn-primary" >Payment</button>           
+                <button class="btn btn-fill btn-primary" (click)="addPayments()">Payment</button>           
                </div>
             </div>
         </div>

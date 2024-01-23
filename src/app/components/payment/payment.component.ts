@@ -25,12 +25,24 @@ export class PaymentComponent {
     this.createPaymentAddForm();
   }
   
-  addPayments(payment:Payment){
-    this.paymentService.addPayments(payment).subscribe((response)=>{
-      console.log()
-      this.payments=response.data;
-    })
+  addPayments() {
+    if (this.paymentAddForm.valid) {
+      let paymentModel = Object.assign({}, this.paymentAddForm.value);
+      console.log(paymentModel); 
+  
+      this.paymentService.addPayments(paymentModel).subscribe(
+        data => {
+          console.log(data, "ödeme alındı");
+        },
+        error => {
+          console.error("Ödeme ekleme hatası:", error);
+        }
+      );
+    } else {
+      console.log("hata, form eksik");
+    }
   }
+  
   
   createPaymentAddForm(){
     this.paymentAddForm=this.formBuilder.group({

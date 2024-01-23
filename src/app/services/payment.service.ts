@@ -13,10 +13,10 @@ export class PaymentService {
 
   constructor(private httpClient:HttpClient) { }
 
-addPayments(payment:Payment):Observable<ListResponseModel<Payment>>
+addPayments(payment:Payment)
 {
-  let newPath=this.apiUrl+ "payments/add";
-  return this.httpClient.post<ListResponseModel<Payment>>(newPath,payment);
+  return this.httpClient.post(this.apiUrl+"payments/add",payment)
+  
 }
 
 }
