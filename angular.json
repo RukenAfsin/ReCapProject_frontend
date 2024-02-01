@@ -36,11 +36,13 @@
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/alertifyjs/build/css/alertify.min.css"
             ],
             "scripts": [
               "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "./node_modules/jquery/dist/jquery.min.js"
+              "./node_modules/jquery/dist/jquery.min.js",
+              "node_modules/alertifyjs/build/alertify.min.js"
 
             ]
           },
@@ -99,9 +101,16 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              "node_modules/alertifyjs/build/css/alertify.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              "node_modules/alertifyjs/build/css/alertify.min.css"
+            ]            
           }
         }
       }

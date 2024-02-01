@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertifyService, MessageType, Position } from './services/alertify.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'RentACarProject';
+
+  constructor(private alertifyService:AlertifyService)
+  {
+    this.alertifyService.message("Welcome..",{
+      dismissOthers:true,
+      messageType:MessageType.Success,
+      position:Position.TopCenter,
+
+    })
+  }
+
+ 
 }
