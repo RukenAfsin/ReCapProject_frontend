@@ -8,6 +8,8 @@ import { Color } from '../../models/color';
 import { ColorService } from '../../services/color.service';
 import { CarImageService } from '../../services/car-image.service';
 import { CarImage } from '../../models/carImage';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../services/custom-toastr.service';
+
 
 @Component({
   selector: 'app-car',
@@ -33,7 +35,8 @@ export class CarComponent {
     private activatedRoute: ActivatedRoute,
     private brandService: BrandService,
     private colorService: ColorService,
-    private carImageService: CarImageService
+    private carImageService: CarImageService,
+    private toastrService:CustomToastrService
   ) { }
 
   ngOnInit(): void {
@@ -58,7 +61,11 @@ export class CarComponent {
   getCars() {
     this.carService.getCars().subscribe((response) => {
       this.cars = response.data;
-      // this.dataLoaded=true;
+      this.toastrService.message("Welcome My Love", "You are seeing  all cars",{
+        messageType: ToastrMessageType.Info,
+        position:ToastrPosition.BottomFullWidth
+
+      })
     });
   }
 
