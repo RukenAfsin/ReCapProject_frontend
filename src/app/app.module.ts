@@ -20,6 +20,8 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { CommonModule } from '@angular/common';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { ToastrModule } from 'ngx-toastr';
     FilterPipePipe,
     CarImageComponent,
     PaymentComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     CommonModule,
