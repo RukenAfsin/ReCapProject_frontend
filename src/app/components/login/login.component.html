@@ -5,16 +5,16 @@
     <div class="col-md-6">
       <div class="form-group">
         <label for="email">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email">
+        <input #email class="form-control" id="email" placeholder="Enter email">
         <small class="form-text text-muted invalid-feedback">**</small>
       </div>
       <br />
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password">
+        <input #password class="form-control" id="password" placeholder="Password">
       </div>
       <br />
-      <button style="margin-top: 3; background-color:cadetblue" type="submit" routerLink=""
+      <button style="margin-top: 3; background-color:cadetblue" type="submit"    (click)="login(email.value,password.value)"  routerLink=""
         class="btn btn-primary">Submit</button>
     </div>
     <div class="col-md-5"></div>

@@ -23,6 +23,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RegisterModule } from './components/register/register/register.module';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,13 @@ import { RegisterModule } from './components/register/register/register.module';
     HttpClientModule,
     FormsModule,
     ToastrModule.forRoot(),
-    RegisterModule
+    RegisterModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter:()=>localStorage.getItem("accessToken"),
+        allowedDomains:["localhost:44383"],
+      }
+    })
   ],
   providers: [Location, provideAnimationsAsync()],
   bootstrap: [AppComponent]

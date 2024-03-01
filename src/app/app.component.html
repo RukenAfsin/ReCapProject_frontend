@@ -1,13 +1,45 @@
-<div class="container">
-<app-navi></app-navi>
-<div class="row">
-    <div class="col-md-2">
-        <app-brand></app-brand>
-</div>
-<div class="col-md-10">
-    <router-outlet></router-outlet>
-</div>
-</div> 
-</div>
-
-
+<div class= "row">   
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href=""> Rent A Car</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <!-- <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="">Cars</a>
+                  </li> -->
+ 
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="register" *ngIf="!authService._isAuthenticated">Register</a>
+                  </li>
+    
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="login" *ngIf="!authService._isAuthenticated">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="login"  style="color:red" cursor="pointer;" (click)="signOut()"   *ngIf="authService._isAuthenticated">Logout</a>
+                  </li>
+                  <li>
+                    <a routerLink="admin" class="btn btn-outline-success" type="submit"*ngIf="authService._isAuthenticated">Cars</a>
+                  </li>
+                 
+                </ul>
+              </div>
+            </div>
+          </nav>   
+    </div>
+    <div class="col-md-2"></div>
+    </div>
+    
+    <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="col-md-2"></div>
+    </div>
+    

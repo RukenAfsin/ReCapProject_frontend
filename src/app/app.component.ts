@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { AlertifyService, MessageType, Position } from './services/alertify.service';
+import { AuthService } from './services/auth.service';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from './services/custom-toastr.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +12,20 @@ import { AlertifyService, MessageType, Position } from './services/alertify.serv
 export class AppComponent {
   title = 'RentACarProject';
 
-  constructor(private alertifyService:AlertifyService)
+  constructor(public authService:AuthService,private toastrService:CustomToastrService,
+    private router:Router )
   {
-    this.alertifyService.message("Welcome..",{
-      dismissOthers:true,
-      messageType:MessageType.Success,
-      position:Position.TopCenter,
-
+    authService.identityCheck()
+  }
+  
+  signOut(){
+    localStorage.removeItem("accessToken")
+    this.authService.identityCheck()
+    this.router.navigate([""])
+    this.toastrService.message("The session is closed", "Session Closed",{
+      messageType:ToastrMessageType.Warning,
+      position:ToastrPosition.TopRight
     })
   }
 
- 
 }
