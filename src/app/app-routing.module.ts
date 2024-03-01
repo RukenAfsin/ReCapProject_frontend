@@ -5,6 +5,7 @@ import { RentalComponent } from './components/rental/rental.component';
 import { CarImageComponent } from './components/car-image/car-image.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
 {path:"", pathMatch:"full", component:CarComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
 {path:"carImages/car/:carId", component:CarImageComponent},
 {path:"cars/color/:colorId/brand/:brandId",component:CarComponent},
 {path:"register", component:RegisterComponent },
+{path:"login", component:LoginComponent}
 
 ];
 

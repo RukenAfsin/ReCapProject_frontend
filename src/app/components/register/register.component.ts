@@ -5,7 +5,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators }
 import { User } from '../../entities/user';
 import { Create_User } from '../../contrary/create_user';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../services/custom-toastr.service';
-import { UserService } from '../../services/authservice';
+import { UserService } from '../../services/userservice';
 
 @Component({
   selector: 'app-register',
