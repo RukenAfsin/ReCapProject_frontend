@@ -1,79 +1,122 @@
-<form>
+<div class="container">
   <br />
   <div class="row">
     <div class="col-md-6">
-      <div class="form-group">
-        <label for="exampleInputEmail1">Name Surname</label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Name Surname"
-        />
-        <small id="emailHelp" class="form-text text-muted"></small>
-      </div>
+      <form [formGroup]="frm" (ngSubmit)="onSubmit(frm.value)">
+        <div class="form-group">
+          <label for="firstname">Firstname</label>
+          <input
+            type="text"
+            formControlName="firstname"
+            class="form-control"
+            id="firstname"
+            placeholder="Firstname"
+            [ngClass]="{
+              'is-invalid': submitted && frm.get('firstname')?.invalid
+            }"/>
 
-      <br />
+            <small
+            class="form-text text-muted invalid-feedback"
+            *ngIf="submitted && frm.get('firstname')?.errors?.['required']"
+            >Please Correct Your Firstname</small>
 
-      <div class="form-group">
-        <label for="exampleInputEmail1">User Name</label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Username"
-        />
-        <small id="emailHelp" class="form-text text-muted"></small>
-      </div>
+            <small
+            class="form-text text-muted invalid-feedback"
+            *ngIf="submitted && frm.get('firstname')?.errors?.['maxlength']"
+            >Length should be between 3-50 characters</small>
+          
 
-      <br />
+            <small
+            class="form-text text-muted invalid-feedback"
+            *ngIf="submitted && frm.get('firstname')?.errors?.['minlength']"
+            >Length should be between 3-50 characters</small>
+          
+            
+        </div>
 
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
-        />
-        <small id="emailHelp" class="form-text text-muted"></small>
-      </div>
+        <br />
 
-      <br />
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
-          placeholder="Password"
-        />
-      </div>
-      <br />
+        <div class="form-group">
+          <label for="lastname">Lastname</label>
+          <input
+            type="text"
+            formControlName="lastname"
+            class="form-control"
+            id="lastname"
+            placeholder="Lastname"
+            [ngClass]="{
+              'is-invalid': submitted && frm.get('lastname')?.invalid
+            }"
+          />
+          <small
+  class="form-text text-muted invalid-feedback"
+  *ngIf="submitted && frm.get('lastname')?.errors?.['required']"
+  >Please Enter Your Lastname</small>
 
-      <div class="form-group">
-        <label for="exampleInputPassword1">Confirm Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
-          placeholder="Password"
-        />
-      </div>
-      <br />
+        </div>
+
+        <br />
+
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input
+            type="email"
+            formControlName="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter email"
+            [ngClass]="{ 'is-invalid': submitted && frm.get('email')?.invalid }"
+          />
+          <small
+          class="form-text text-muted invalid-feedback"
+          *ngIf="submitted && frm.get('email')?.errors?.['required']"
+          >Please Enter Your Email</small>
+        </div>
+
+        <br />
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            formControlName="password"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+            [ngClass]="{
+              'is-invalid': submitted && frm.get('password')?.invalid
+            }"/>
+        </div>
+        <br />
+        
+        <div class="form-group">
+          <label for="passwordconfirm">Confirm Password</label>
+          <input
+            type="password"
+            formControlName="passwordconfirm"
+            class="form-control"
+            id="passwordconfirm"
+            placeholder="Password"
+            [ngClass]="{
+              'is-invalid': submitted && frm.get('passwordconfirm')?.invalid
+            }"
+          />
+          <small
+            class="form-text text-muted invalid-feedback"
+            *ngIf="submitted && frm.get('passwordconfirm')?.errors?.['notSame']"
+          >Passwords do not match.</small>
+          
+        </div>
+        <br />
+        <button
+          style="margin-top: 3px; background-color: green"
+          type="submit"
+          class="btn btn-primary">
+          Submit
+        </button>
+      </form>
     </div>
     <div class="col-md-3"></div>
     <div class="col-md-3"></div>
   </div>
   <br />
-  <button
-    style="margin-top: 3px; background-color: green"
-    type="submit"
-    class="btn btn-primary"
-  >
-    Submit
-  </button>
-</form>
+</div>

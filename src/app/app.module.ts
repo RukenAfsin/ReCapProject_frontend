@@ -22,6 +22,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { RegisterModule } from './components/register/register/register.module';
 
 @NgModule({
   declarations: [
@@ -36,8 +37,7 @@ import { RegisterComponent } from './components/register/register.component';
     FilterPipePipe,
     CarImageComponent,
     PaymentComponent,
-    LoginComponent,
-    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
@@ -47,6 +47,7 @@ import { RegisterComponent } from './components/register/register.component';
     HttpClientModule,
     FormsModule,
     ToastrModule.forRoot(),
+    RegisterModule
   ],
   providers: [Location, provideAnimationsAsync()],
   bootstrap: [AppComponent]
