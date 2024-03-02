@@ -61,17 +61,19 @@ export class RegisterComponent {
       return; // Şifreler eşleşmiyorsa işlemi durdur
     }
   
-    const result: Create_User = await this.userService.Create(user);
-    if (!result.error)
-      this.toastrService.message(result.message, "Register Success", {
+    const result = await this.userService.Create(user);
+    if (result) { // result varsa, yani kayıt başarılı olduysa
+      this.toastrService.message("Register Success", "Success", {
         messageType: ToastrMessageType.Success,
         position: ToastrPosition.TopRight
       });
-    else
-      this.toastrService.message(result.message, "Register Error", {
+    } else { // result yoksa, yani kayıt başarısız olduysa
+      this.toastrService.message("Register Error", "Error", {
         messageType: ToastrMessageType.Error,
         position: ToastrPosition.TopRight
       });
-  }
+    }
+    
   
+}
 }

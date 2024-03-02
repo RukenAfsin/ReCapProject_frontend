@@ -16,10 +16,10 @@ export class UserAuthService {
       const response: any = await this.httpClient
         .post<any>(this.apiUrl + 'auth/login', { email, password })
         .toPromise();
-
+      // debugger;
       const tokenResponse: TokenResponse = response as TokenResponse;
       localStorage.setItem('accessToken', tokenResponse.token.accessToken);
-      localStorage.setItem('refreshToken', tokenResponse.token.refreshToken);
+    // localStorage.setItem('refreshToken', tokenResponse.token.refreshToken);
 
       this.toastrService.message('User login successful', 'Login Success', {
         messageType: ToastrMessageType.Success,
@@ -31,22 +31,22 @@ export class UserAuthService {
       throw new Error('HTTP request failed');
     }
   }
-
-  async refreshTokenLogin(refreshToken: string, callBackFunction?: () => void): Promise<any> {
-    try {
-      const observable: Observable<any | TokenResponse> = this.httpClient.post<any>(this.apiUrl + 'auth/refreshtokenlogin', { refreshToken });
-      const tokenResponse: TokenResponse = await observable.toPromise();
-
-      if (tokenResponse) {
-        localStorage.setItem('accessToken', tokenResponse.token.accessToken);
-        localStorage.setItem('refreshToken', tokenResponse.token.refreshToken);
-      }
-
-      if (callBackFunction) {
-        callBackFunction();
-      }
-    } catch (error) {
-      throw new Error('HTTP request failed');
-    }
-  }
 }
+  //  async refreshTokenLogin(refreshToken: string, callBackFunction?: () => void): Promise<any> {
+  //   try {
+  //    const observable: Observable<any | TokenResponse> = this.httpClient.post<any>(this.apiUrl + 'auth', { refreshToken });
+  //      const tokenResponse: TokenResponse = await observable.toPromise();
+
+  //     if (tokenResponse) {
+  //       localStorage.setItem('accessToken', tokenResponse.token.accessToken);
+  //      // localStorage.setItem('refreshToken', tokenResponse.token.refreshToken);
+  //     }
+
+  //     if (callBackFunction) {
+  //      callBackFunction();
+  //      }
+  //    } catch (error) {
+  //      throw new Error('HTTP request failed');
+  //    }
+  //  }
+
