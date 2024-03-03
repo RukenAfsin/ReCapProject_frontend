@@ -18,7 +18,7 @@ export class UserAuthService {
         .toPromise();
       // debugger;
       const tokenResponse: TokenResponse = response as TokenResponse;
-      localStorage.setItem('accessToken', tokenResponse.token.accessToken);
+      localStorage.setItem('accessToken', tokenResponse.data.token);
     // localStorage.setItem('refreshToken', tokenResponse.token.refreshToken);
 
       this.toastrService.message('User login successful', 'Login Success', {

@@ -1,5 +1,4 @@
 export class Token {
-    accessToken:string;
+    token:string;
     expiration:Date;
-     //refreshToken:string;
 }
