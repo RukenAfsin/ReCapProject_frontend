@@ -29,12 +29,12 @@ export class RentalComponent {
     private customerService:CustomerService,
     private location: Location,
     private activatedRoute:ActivatedRoute){
-      this.rentalData = {
-        carId: 0,
-        customerId: 0,
-        rentDate: new Date(),
-        returnDate: undefined,
-      } as Rental;
+      // this.rentalData = {
+      //   carId: 0,
+      //   customerId: 0,
+      //   rentDate: new Date(),
+      //   returnDate: undefined,
+      // } as Rental;
       
   }
   ngOnInit(): void {

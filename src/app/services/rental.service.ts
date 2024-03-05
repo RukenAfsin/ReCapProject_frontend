@@ -26,5 +26,10 @@ export class RentalService {
     let newPath = this.apiUrl + "rentals/checkrental";
     return this.httpClient.post<ListResponseModel<Rental>>(newPath, rental);
   }
+
+  getRentalsByCarId(carId:number){
+    let newPath = this.apiUrl + "rentals/getrentalsbycarId?carId="+carId;
+    return this.httpClient.get<ListResponseModel<Rental>>(newPath);
+  }
   
 }
