@@ -11,5 +11,7 @@ export interface CarImage{
     id : number;
     imagePath :string;
     year : number;
+    rentDate:Date;
+    returnDate:Date;
 
 }

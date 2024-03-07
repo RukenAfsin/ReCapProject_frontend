@@ -37,7 +37,6 @@ this.activatedRoute.params.subscribe(params=>{
   if(params["carId"])
   {
     this.getCarImage(params["carId"]);
-    this.getRental(params["carId"]);
 
   }
   this.getAll()
@@ -52,56 +51,45 @@ getAll(){
 }
 
 
-getRental(carId: number) {
-  this.rentalService.getRentalsByCarId(carId).subscribe(response => {
-    console.log(response)
-    this.rental = response.data;
-    if (this.rental) {
-      const now: Date = new Date();
-      this.rental.forEach(rental => {
-        const a: Date = rental.rentDate;
-        const b: Date = rental.returnDate;   
-        if (!a || !b) {
-          this.toastrService.message("You can rent this car today", "Renting is convenient", {
-            messageType: ToastrMessageType.Success,
-            position: ToastrPosition.BottomFullWidth
-          })
-          return;
-        }
-       else if (now >= a && now <= b) {
-          this.toastrService.message("You can not rent this car today", "Renting is not convenient", {
-            messageType: ToastrMessageType.Error,
-            position: ToastrPosition.BottomFullWidth
-          });
-          return;
-        }
-        else{
-          this.toastrService.message("You can not rent this car today", "Renting is not convenient", {
-            messageType: ToastrMessageType.Error,
-            position: ToastrPosition.BottomFullWidth
-          });
-        }
-      });}})
-    }
 
 
 getCarImage(carId:number){
-  this.carImageService.getCarImage(carId).subscribe(response=>{
-  this.carImages=response.data;
-  this.dataLoaded=true;
-  })
-}
+  this.carImageService.getCarImage(carId).subscribe(response => {
+    this.carImages = response.data;
+    console.log(response)
+    const now: Date = new Date();
+    now.setHours(0, 0, 0, 0); // Saat kısmını sıfırlar
+    this.carImages.forEach(carImage => {
+      const a: Date | null = carImage.rentDate ? new Date(carImage.rentDate) : null;
+      const b: Date | null = carImage.returnDate ? new Date(carImage.returnDate) : null;
+      console.log("Now:", now, "Rent Date:", a, "Return Date:", b, "Car Image Id:", carImage.id);
+      if (!a || !b || now < a || now > b) {
+        console.log("Now is not between rent and return dates");
+        this.toastrService.message("You can rent this car today", "Renting is convenient", {
+          messageType: ToastrMessageType.Success,
+          position: ToastrPosition.TopCenter
+        });
+      } else {
+        console.log("Now is between rent and return dates");
+        this.toastrService.message("You cannot rent this car today", "Renting is not convenient", {
+          messageType: ToastrMessageType.Error,
+          position: ToastrPosition.TopCenter
+        });
+      }
+    });
+  });
+} 
+
+
+
+
+
+
 
 goBack(): void {
   this.location.back();
 }
 
 
-
-onDetailsButtonClick(carId: number): void {
-  this.getCarImage(carId);
-  this.getRental(carId);
-  
-}
 
 }

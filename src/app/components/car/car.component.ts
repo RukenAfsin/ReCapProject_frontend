@@ -9,6 +9,8 @@ import { ColorService } from '../../services/color.service';
 import { CarImageService } from '../../services/car-image.service';
 import { CarImage } from '../../models/carImage';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../services/custom-toastr.service';
+import { RentalService } from '../../services/rental.service';
+import { Rental } from '../../models/rental';
 
 
 @Component({
@@ -22,6 +24,7 @@ export class CarComponent {
   // dataLoaded=false;
   brands: Brand[] = [];
   colors: Color[] = [];
+  rental:Rental[]=[];
   colorFilter: number = 0;
   brandFilter: number = 0;
   imageOfPath: string;
@@ -36,7 +39,8 @@ export class CarComponent {
     private brandService: BrandService,
     private colorService: ColorService,
     private carImageService: CarImageService,
-    private toastrService:CustomToastrService
+    private toastrService:CustomToastrService,
+    private rentalService:RentalService
   ) { }
 
   ngOnInit(): void {
@@ -139,6 +143,33 @@ export class CarComponent {
   getCarImage(carId:number){
     this.carImageService.getCarImage(carId).subscribe(response=>{
     this.carImages=response.data;
+    const now:Date=new Date();
+    this.carImages.forEach(carImages=>{
+      const a : Date= carImages.rentDate;
+      const b: Date=carImages.returnDate;
+      if (a == null || b == null){
+        this.toastrService.message("You can  rent this car today", "Renting is  convenient", {
+          messageType:ToastrMessageType.Success,
+          position:ToastrPosition.TopCenter
+        })
+       }
+       else if(now >= a && now <= b){{
+        this.toastrService.message("You can not rent this car today", "Renting is not convenient", {
+          messageType:ToastrMessageType.Success,
+          position:ToastrPosition.TopCenter
+        })
+       }
+      }
+      else{
+        this.toastrService.message("You can not rent this car today", "Renting is not convenient", {
+          messageType: ToastrMessageType.Error,
+          position: ToastrPosition.BottomFullWidth
+        });
+      }
+ 
     })
+   
+    })
+     
   }
 }
