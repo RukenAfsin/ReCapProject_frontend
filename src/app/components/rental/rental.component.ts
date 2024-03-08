@@ -22,20 +22,18 @@ export class RentalComponent {
   cars:Car[]=[];
   customers:Customer[]=[]; 
   rentalData: Rental;
-  
-  
+
   constructor(private rentalService:RentalService, 
-    private carService:CarService,
-    private customerService:CustomerService,
-    private location: Location,
-    private activatedRoute:ActivatedRoute){
-      // this.rentalData = {
-      //   carId: 0,
-      //   customerId: 0,
-      //   rentDate: new Date(),
-      //   returnDate: undefined,
-      // } as Rental;
-      
+      private carService:CarService,
+      private customerService:CustomerService,
+      private location: Location,
+      private activatedRoute:ActivatedRoute){
+        this.rentalData = {
+          carId: 0,
+          customerId: 0,
+          rentDate: new Date(),
+          returnDate: new Date(), // veya null
+        } as Rental;
   }
   ngOnInit(): void {
     

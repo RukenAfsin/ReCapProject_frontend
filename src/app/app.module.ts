@@ -24,6 +24,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RegisterModule } from './components/register/register/register.module';
 import { JwtModule } from '@auth0/angular-jwt';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     HttpClientModule,
     FormsModule,
     ToastrModule.forRoot(),
+    MatProgressSpinnerModule,
     RegisterModule,
     JwtModule.forRoot({
       config:{

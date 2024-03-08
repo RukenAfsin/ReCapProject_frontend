@@ -4,6 +4,7 @@ import { PaymentService } from '../../services/payment.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {FormGroup, FormBuilder, FormControl,Validators} from "@angular/forms"
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class PaymentComponent {
   constructor(private paymentService:PaymentService,
     private location:Location,
     private formBuilder:FormBuilder,
-    private activatedRoute:ActivatedRoute){}
+    private activatedRoute:ActivatedRoute,
+    private spinnerModule:MatProgressSpinnerModule){}
 
   ngOnInit():void{
     this.createPaymentAddForm();
@@ -33,6 +35,7 @@ export class PaymentComponent {
       this.paymentService.addPayments(paymentModel).subscribe(
         data => {
           console.log(data, "ödeme alındı");
+          this.spinnerModule;
         },
         error => {
           console.error("Ödeme ekleme hatası:", error);
