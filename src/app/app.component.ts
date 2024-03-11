@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AlertifyService, MessageType, Position } from './services/alertify.service';
 import { AuthService } from './services/auth.service';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from './services/custom-toastr.service';
 import { Router } from '@angular/router';

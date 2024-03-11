@@ -25,6 +25,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { RegisterModule } from './components/register/register/register.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     FormsModule,
     ToastrModule.forRoot(),
     MatProgressSpinnerModule,
+    MatRadioModule,
     RegisterModule,
     JwtModule.forRoot({
       config:{

@@ -8,6 +8,7 @@ import { Customer } from '../../models/customer';
 import { CustomerService } from '../../services/customer.service';
 import {FormGroup, FormBuilder, FormControl,Validators} from "@angular/forms"
 import { Location } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class RentalComponent {
       private carService:CarService,
       private customerService:CustomerService,
       private location: Location,
-      private activatedRoute:ActivatedRoute){
+      private activatedRoute:ActivatedRoute,
+      private spinnerModule:MatProgressSpinnerModule){
         this.rentalData = {
           carId: 0,
           customerId: 0,

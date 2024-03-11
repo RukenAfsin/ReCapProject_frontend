@@ -11,6 +11,7 @@ import { CarImage } from '../../models/carImage';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../services/custom-toastr.service';
 import { RentalService } from '../../services/rental.service';
 import { Rental } from '../../models/rental';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @Component({
@@ -39,8 +40,7 @@ export class CarComponent {
     private brandService: BrandService,
     private colorService: ColorService,
     private carImageService: CarImageService,
-    private toastrService:CustomToastrService,
-    private rentalService:RentalService
+    private toastrService:CustomToastrService
   ) { }
 
   ngOnInit(): void {
@@ -68,7 +68,6 @@ export class CarComponent {
       this.toastrService.message("Welcome My Love", "You are seeing  all cars",{
         messageType: ToastrMessageType.Info,
         position:ToastrPosition.BottomFullWidth
-
       })
     });
   }

@@ -1,10 +1,14 @@
 <div class="row">
-  <div class="col-md-6">
+  <mat-radio-group aria-label="Select an option">
+    <mat-radio-button value="1">Option 1</mat-radio-button>
+    <mat-radio-button value="2">Option 2</mat-radio-button>
+  </mat-radio-group>
+  <div class="col-md-4">
     <label for="filterText" class="form-label">Search By Car</label>
     <input type="text" class="form-control" [(ngModel)]="filterText" id="filterText"
       placeholder="Enter search phrase" />
   </div>
-  <div class="col-md-6">
+  <div class="col-md-4">
     <label for="filterColorText" class="form-label">Search By Color</label>
     <input type="text" class="form-control" [(ngModel)]="filterColorText" id="filterColorText"
       placeholder="Enter color" />

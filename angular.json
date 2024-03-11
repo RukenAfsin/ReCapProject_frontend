@@ -40,7 +40,9 @@
               "node_modules/@angular/material/progress-spinner/_progress-spinner-theme.scss",
               "src/styles.css",
               "node_modules/ngx-toastr/toastr.css",
-              "node_modules/alertifyjs/build/css/alertify.min.css"
+              "node_modules/alertifyjs/build/css/alertify.min.css",
+              "node_modules/@angular/material/radio/_radio-theme.scss"
+
             ],
             "scripts": [
               "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
@@ -108,7 +110,9 @@
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "node_modules/ngx-toastr/toastr.css",
-              "node_modules/alertifyjs/build/css/alertify.min.css"
+              "node_modules/alertifyjs/build/css/alertify.min.css",
+              "node_modules/@angular/material/radio/_radio-theme.scss"
+
             ],
             "scripts": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
