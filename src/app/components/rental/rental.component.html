@@ -1,63 +1,91 @@
-<div class="container">
-  <div class="row">
-    <select [(ngModel)]="carFilter" class="form-select" aria-label="Please choose the car that you want to rent">
-      <option value="0">Please choose the car that you want to rent. </option>
-      <option [value]="car.carId" *ngFor="let car of cars"> {{car.carName}}</option>
-    </select>
-  </div>
-</div>
 
-<br />
-
-<div class="container">
-  <div class="row">
-    <select [(ngModel)]="customerFilter" class="form-select" aria-label="Who want to rent this car?">
-      <option value="0">Who want to rent this car?</option>
-      <option [value]="customer.customerId" *ngFor="let customer of customers">{{customer.customerFullName}}</option>
-    </select>
-  </div>
-</div>
-
-<br />
-<div class="card-body">
-  <form>
-    <div class="mb-3">
-      <label for="rentDate">Rent Date</label>
-      <div class="form-group">
-        <input type="date" class="form-control" [(ngModel)]="rentalData.rentDate" name="rentDate"
-          placeholder="Rent Date" />
+<mat-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out your Car's information that you want to rent</ng-template>
+      <div>
+        <div class="container">
+          <div class="row">
+            <label for="carFilter">Car's Model</label>
+            <select [(ngModel)]="carFilter" class="form-select" aria-label="Please choose the car that you want to rent">
+              <option value="0">Please choose the car that you want to rent. </option>
+              <option [value]="car.carId" *ngFor="let car of cars"> {{car.carName}}</option>
+            </select>
+          </div>
+        </div>
+        <br />
+        <div class="container">
+          <div class="row">
+            <label for="customerFilter">Customer's Name</label>
+            <select [(ngModel)]="customerFilter" class="form-select" aria-label="Who want to rent this car?">
+              <option value="0">Who want to rent this car?</option>
+              <option [value]="customer.customerId" *ngFor="let customer of customers">{{customer.customerFullName}}</option>
+            </select>
+          </div>
+        </div>
+        <br />
+        <div class="card-body">
+          <form>
+            <div class="mb-3">
+              <label for="rentDate">Rent Date</label>
+              <div class="form-group">
+                <input type="date" class="form-control" [(ngModel)]="rentalData.rentDate" name="rentDate"
+                  placeholder="Rent Date" />
+              </div>
+            </div>
+          </form>
+        </div>
+        <br />
+        <div class="card-body">
+          <form>
+            <div class="mb-3">
+              <label for="returnDate">Return Date</label>
+              <div class="form-group">
+                <input type="date" class="form-control" [(ngModel)]="rentalData.returnDate" name="returnDate"
+                  placeholder="Return Date" />
+              </div>
+            </div>
+          </form>
+        </div>
+        <br />
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-md-1 mb-1">
+              <button data-bs-dismiss="modal" class="btn btn-fill btn-outline-dark" style="width: 70px;" (click)="goBack()">
+                Back
+              </button>
+            </div>
+        
+            <div class="col-md-8 mb-8">
+              <!-- <button data-bs-dismiss="modal" (click)="checkRental(rentalData)" class="btn btn-fill btn-outline-success"
+                routerLink="/payments" style="width: 150px;">
+                Click for Payment
+              </button> -->
+            </div>
+          </div>
+        </div>
+        <button mat-button matStepperNext  routerLink="/payments"  >Next</button>
       </div>
-    </div>
-  </form>
-</div>
-
-<br />
-
-<div class="card-body">
-  <form>
-    <div class="mb-3">
-      <label for="returnDate">Return Date</label>
-      <div class="form-group">
-        <input type="date" class="form-control" [(ngModel)]="rentalData.returnDate" name="returnDate"
-          placeholder="Return Date" />
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Fill out your Payment Information">
+    <form [formGroup]="secondFormGroup">
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
       </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Renting Successfull</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
     </div>
-  </form>
-</div>
-<br />
-<div class="card-footer">
-  <div class="row">
-    <div class="col-md-1 mb-1">
-      <button data-bs-dismiss="modal" class="btn btn-fill btn-outline-dark" style="width: 70px;" (click)="goBack()">
-        Back
-      </button>
-    </div>
+  </mat-step>
+</mat-stepper>
+<br/>
 
-    <div class="col-md-8 mb-8">
-      <button data-bs-dismiss="modal" (click)="checkRental(rentalData)" class="btn btn-fill btn-outline-success"
-        routerLink="/payments" style="width: 150px;">
-        Click for Payment
-      </button>
-    </div>
-  </div>
-</div>
+
+

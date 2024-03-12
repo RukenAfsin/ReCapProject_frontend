@@ -1,0 +1,47 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+  .mat-step-header {
+    background-color: #960909; /* Arka plan rengini istediğiniz renk koduyla değiştirin */
+  }
+.mat-stepper{
+    background-color: #c31d1d;
+}
+.mat-step{
+    background-color: #c31d1d;
+}
+
+label[for="rentDate"] {
+    color: rgb(216, 203, 203); /* İstediğiniz rengi burada belirleyin */
+  }
+
+  label[for="rentDate"] {
+    font-size: 16px; /* İstediğiniz boyutu burada belirleyin */
+  }
+
+  label[for="returnDate"] {
+    color: rgb(216, 203, 203); /* İstediğiniz rengi burada belirleyin */
+  }
+
+  label[for="returnDate"] {
+    font-size: 16px; /* İstediğiniz boyutu burada belirleyin */
+  }
+
+  label[for="customerFilter"] {
+    color:rgb(216, 203, 203); /* İstediğiniz rengi burada belirleyin */
+    font-size: 16px; /* İstediğiniz boyutu burada belirleyin */
+  }
+
+  label[for="carFilter"] {
+    color: rgb(216, 203, 203); /* İstediğiniz rengi burada belirleyin */
+    font-size: 16px; /* İstediğiniz boyutu burada belirleyin */
+  }
+
+  .mat-step-content p {
+    color: green; /* İstediğiniz rengi burada belirleyin */
+    font-size: 18px; /* İstediğiniz boyutu burada belirleyin */
+  }

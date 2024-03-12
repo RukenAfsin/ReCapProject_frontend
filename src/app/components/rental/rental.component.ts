@@ -24,11 +24,20 @@ export class RentalComponent {
   customers:Customer[]=[]; 
   rentalData: Rental;
 
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
+  secondFormGroup = this._formBuilder.group({
+    secondCtrl: ['', Validators.required],
+  });
+  isLinear = false;
+
   constructor(private rentalService:RentalService, 
       private carService:CarService,
       private customerService:CustomerService,
       private location: Location,
       private activatedRoute:ActivatedRoute,
+      private _formBuilder: FormBuilder,
       private spinnerModule:MatProgressSpinnerModule){
         this.rentalData = {
           carId: 0,

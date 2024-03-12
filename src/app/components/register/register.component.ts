@@ -1,9 +1,7 @@
-// register.component.ts
 
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { User } from '../../entities/user';
-import { Create_User } from '../../contrary/create_user';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../services/custom-toastr.service';
 import { UserService } from '../../services/userservice';
 
