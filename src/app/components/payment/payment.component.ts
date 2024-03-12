@@ -3,7 +3,7 @@ import { Payment } from '../../models/payment';
 import { PaymentService } from '../../services/payment.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import {FormGroup, FormBuilder, FormControl,Validators} from "@angular/forms"
+import {FormGroup, FormBuilder, FormControl,Validators, ValidationErrors} from "@angular/forms"
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
@@ -15,7 +15,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 export class PaymentComponent {
   payments:Payment[]=[];
   paymentData:Payment;
-  paymentAddForm:FormGroup;
+  frm: FormGroup;
+  submitted = false;
 
   constructor(private paymentService:PaymentService,
     private location:Location,
@@ -28,8 +29,10 @@ export class PaymentComponent {
   }
   
   addPayments() {
-    if (this.paymentAddForm.valid) {
-      let paymentModel = Object.assign({}, this.paymentAddForm.value);
+    this.submitted = true; // Formun gönderildiğini belirtmek için submitted değişkenini true olarak ayarla
+    
+    if (this.frm.valid) {
+      let paymentModel = Object.assign({}, this.frm.value);
       console.log(paymentModel); 
   
       this.paymentService.addPayments(paymentModel).subscribe(
@@ -46,15 +49,14 @@ export class PaymentComponent {
     }
   }
   
-  
   createPaymentAddForm(){
-    this.paymentAddForm=this.formBuilder.group({
-      cardNo:["", Validators.required],
-      expiryMonth:["", Validators.required],
-      expiryYear:["", Validators.required],
-      cvv:["", Validators.required],
-      customerId:["", Validators.required]
-    })
+    this.frm=this.formBuilder.group({
+      cardNo: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
+      expiryMonth: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
+      expiryYear: ["", [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+      cvv: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
+      cardOwner: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(50)]]
+    });
   }
 
 

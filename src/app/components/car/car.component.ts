@@ -40,10 +40,12 @@ export class CarComponent {
     private brandService: BrandService,
     private colorService: ColorService,
     private carImageService: CarImageService,
-    private toastrService:CustomToastrService
+    private toastrService:CustomToastrService,
+    private matradiomodule:MatRadioModule
   ) { }
 
   ngOnInit(): void {
+    this.matradiomodule
     this.getBrands();
     this.getColors();
     this.activatedRoute.params.subscribe((params) => {
