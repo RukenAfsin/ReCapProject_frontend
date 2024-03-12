@@ -17,12 +17,23 @@ export class PaymentComponent {
   paymentData:Payment;
   frm: FormGroup;
   submitted = false;
+  currentStep: number = 1;
+
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
+  secondFormGroup = this._formBuilder.group({
+    secondCtrl: ['', Validators.required],
+  });
+  isLinear = false;
+
 
   constructor(private paymentService:PaymentService,
     private location:Location,
     private formBuilder:FormBuilder,
     private activatedRoute:ActivatedRoute,
-    private spinnerModule:MatProgressSpinnerModule){}
+    private spinnerModule:MatProgressSpinnerModule,
+    private _formBuilder: FormBuilder){}
 
   ngOnInit():void{
     this.createPaymentAddForm();

@@ -1,134 +1,144 @@
-<div class="content">
-  <div class="col-md-12">
-    <div class="card">
-      <div class="card-header">
-        <h5 class="title">Make your payment</h5>
-      </div>
-      <div class="card-body">
-        <form [formGroup]="frm">
-          <div class="mb-3">
-            <label for="cardOwner" style="font-weight: bold">Card Owner</label>
-            <div class="form-group">
-              <input
-                type="string"
-                id="cardOwner"
-                formControlName="cardOwner"
-                class="form-control"
-                placeholder="Enters The Card Owner's Name"
-                [ngClass]="{
-                    'is-invalid': submitted && frm.get('cardOwner')?.invalid
-                  }"
-              />
-              
-            <small
-            class="form-text text-muted invalid-feedback"
-            *ngIf="submitted && frm.get('cardOwner')?.errors?.['required']"
-            >Please Correct Your Card Owner's Name</small>
-            <small
-            class="form-text text-muted invalid-feedback"
-            *ngIf="submitted && frm.get('cardOwner')?.errors?.['maxlength']"
-            >Length should be between 3-50 characters</small>
+<div class="payment-container">
+<mat-stepper [linear]="isLinear" #stepper [selectedIndex]="currentStep">
+  <mat-step [stepControl]="firstFormGroup">
+    <ng-template matStepLabel>Fill out your Car's information that you want to rent</ng-template>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Make Your Payment">
+    <form [formGroup]="secondFormGroup">
+      <div>
+        <div class="content">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <form [formGroup]="frm">
+                  <div class="mb-3">
+                    <label for="cardOwner" style="font-weight: bold">Card Owner</label>
+                    <div class="form-group">
+                      <input
+                        type="string"
+                        id="cardOwner"
+                        formControlName="cardOwner"
+                        class="form-control"
+                        placeholder="Enters The Card Owner's Name"
+                        [ngClass]="{
+                            'is-invalid': submitted && frm.get('cardOwner')?.invalid
+                          }"
+                      />
+                      
+                    <small
+                    class="form-text text-muted invalid-feedback"
+                    *ngIf="submitted && frm.get('cardOwner')?.errors?.['required']"
+                    >Please Correct Your Card Owner's Name</small>
+                    <small
+                    class="form-text text-muted invalid-feedback"
+                    *ngIf="submitted && frm.get('cardOwner')?.errors?.['maxlength']"
+                    >Length should be between 3-50 characters</small>
+        
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="cardNo" style="font-weight: bold">Card No</label>
+                    <div class="form-group">
+                      <input
+                        type="number"
+                        id="cardNo"
+                        formControlName="cardNo"
+                        class="form-control"
+                        placeholder="Please Enter 16 Digit Card's Number"
+                        [ngClass]="{
+                            'is-invalid': submitted && frm.get('cardNo')?.invalid
+                          }"
+                      />
+                      <small
+                      class="form-text text-muted invalid-feedback"
+                      *ngIf="submitted && frm.get('cardNo')?.errors?.['required']"
+                      >Please Correct Your Card Number</small>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="cvv" style="font-weight: bold">CVV</label>
+                    <div class="form-group">
+                      <input
+                        type="number"
+                        id="cvv"
+                        formControlName="cvv"
+                        class="form-control"
+                        placeholder="CVV"
+                        [ngClass]="{
+                            'is-invalid': submitted && frm.get('cvv')?.invalid
+                          }"
+                      />
+                      <small
+                      class="form-text text-muted invalid-feedback"
+                      *ngIf="submitted && frm.get('cvv')?.errors?.['required']"
+                      >Please Correct Your CVV</small>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="expiryMonth" style="font-weight: bold"
+                      >Expiry Month</label
+                    >
+                    <div class="form-group">
+                      <input
+                        type="number"
+                        id="expiryMonth"
+                        formControlName="expiryMonth"
+                        class="form-control"
+                        placeholder="Expiry Month"
+                        [ngClass]="{
+                            'is-invalid': submitted && frm.get('expiryMonth')?.invalid
+                          }"
+                      />
+                      <small
+                      class="form-text text-muted invalid-feedback"
+                      *ngIf="submitted && frm.get('expiryMonth')?.errors?.['required']"
+                      >Please Correct Your CVV</small>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="expiryYear" style="font-weight: bold"
+                      >Expiry Year</label
+                    >
+                    <div class="form-group">
+                      <input
+                        type="number"
+                        id=" expiryYear"
+                        formControlName="expiryYear"
+                        class="form-control"
+                        placeholder=" Expiry Year"
+                        [ngClass]="{
+                            'is-invalid': submitted && frm.get('expiryYear')?.invalid
+                          }"
+                      />
+                      <small
+                      class="form-text text-muted invalid-feedback"
+                      *ngIf="submitted && frm.get('expiryYear')?.errors?.['required']"
+                      >Please Correct Your Card's Expiry Year</small>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="card-footer">
+                <div>
 
+                </div>
+              </div>
             </div>
           </div>
-          <div class="mb-3">
-            <label for="cardNo" style="font-weight: bold">Card No</label>
-            <div class="form-group">
-              <input
-                type="number"
-                id="cardNo"
-                formControlName="cardNo"
-                class="form-control"
-                placeholder="Please Enter 16 Digit Card's Number"
-                [ngClass]="{
-                    'is-invalid': submitted && frm.get('cardNo')?.invalid
-                  }"
-              />
-              <small
-              class="form-text text-muted invalid-feedback"
-              *ngIf="submitted && frm.get('cardNo')?.errors?.['required']"
-              >Please Correct Your Card Number</small>
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="cvv" style="font-weight: bold">CVV</label>
-            <div class="form-group">
-              <input
-                type="number"
-                id="cvv"
-                formControlName="cvv"
-                class="form-control"
-                placeholder="CVV"
-                [ngClass]="{
-                    'is-invalid': submitted && frm.get('cvv')?.invalid
-                  }"
-              />
-              <small
-              class="form-text text-muted invalid-feedback"
-              *ngIf="submitted && frm.get('cvv')?.errors?.['required']"
-              >Please Correct Your CVV</small>
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="expiryMonth" style="font-weight: bold"
-              >Expiry Month</label
-            >
-            <div class="form-group">
-              <input
-                type="number"
-                id="expiryMonth"
-                formControlName="expiryMonth"
-                class="form-control"
-                placeholder="Expiry Month"
-                [ngClass]="{
-                    'is-invalid': submitted && frm.get('expiryMonth')?.invalid
-                  }"
-              />
-              <small
-              class="form-text text-muted invalid-feedback"
-              *ngIf="submitted && frm.get('expiryMonth')?.errors?.['required']"
-              >Please Correct Your CVV</small>
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="expiryYear" style="font-weight: bold"
-              >Expiry Year</label
-            >
-            <div class="form-group">
-              <input
-                type="number"
-                id=" expiryYear"
-                formControlName="expiryYear"
-                class="form-control"
-                placeholder=" Expiry Year"
-                [ngClass]="{
-                    'is-invalid': submitted && frm.get('expiryYear')?.invalid
-                  }"
-              />
-              <small
-              class="form-text text-muted invalid-feedback"
-              *ngIf="submitted && frm.get('expiryYear')?.errors?.['required']"
-              >Please Correct Your Card's Expiry Year</small>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="card-footer">
-        <div>
-          <button
-            data-bs-dismiss="modal"
-            class="btn btn-fill btn-outline-dark"
-            style="width: 70px"
-            (click)="goBack()"
-          >
-            Back
-          </button>
-          <!-- <mat-spinner></mat-spinner> -->
-          <button class="btn btn-fill btn-primary" (click)="addPayments()">
-            Payment
-          </button>
         </div>
+        
+        <button mat-button matStepperPrevious  (click)="goBack()">Back</button>
+        <button mat-button matStepperNext (click)="addPayments()">Payment</button>
       </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
     </div>
-  </div>
+  </mat-step>
+</mat-stepper>
 </div>

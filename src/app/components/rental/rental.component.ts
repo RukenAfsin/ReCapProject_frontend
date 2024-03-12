@@ -23,6 +23,7 @@ export class RentalComponent {
   cars:Car[]=[];
   customers:Customer[]=[]; 
   rentalData: Rental;
+  currentStep: number = 0;
 
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
@@ -106,6 +107,6 @@ export class RentalComponent {
     this.location.back();
   }
   
-
+  
   }
   
