@@ -1,3 +1,9 @@
 .payment-container {
     background-color: #9f0606; /* Gri tonunda arka plan */
   }
+
+  ::ng-deep .mat-step-content p {
+    font-size: 18px; /* Yazının boyutunu değiştirin */
+    color: red; /* Yazı rengini değiştirin */
+    /* Diğer stil özelliklerini buraya ekleyin */
+  }

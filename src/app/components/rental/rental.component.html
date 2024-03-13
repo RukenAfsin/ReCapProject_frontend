@@ -42,18 +42,10 @@
         </div>
         <br />
         <div class="card-footer">
-          <div class="row">
-            <div class="col-md-1 mb-1">
-              <button type="button" class="btn btn-fill btn-outline-dark" style="width: 70px;" (click)="goBack()">
-                Back
-              </button>
-            </div>
-            <div class="col-md-8 mb-8">
-            </div>
+        <button  mat-button matStepperNext  style="background-color: #7d907d; color: rgb(12, 11, 11);"  (click)="goBack()"> Back </button>
+        <button mat-button matStepperNext  style="background-color: #7d907d; color: rgb(12, 11, 11);"    [disabled]="!firstFormGroup.valid" (click)="addRental()"    routerLink="/payments">Next</button>
           </div>
         </div>
-        <button mat-button matStepperNext [disabled]="!firstFormGroup.valid" (click)="addRental()"    routerLink="/payments">Next</button>
-      </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup" label="Make Your Payment">

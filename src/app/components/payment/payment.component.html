@@ -127,17 +127,18 @@
           </div>
         </div>
         
-        <button mat-button matStepperPrevious  (click)="goBack()">Back</button>
-        <button mat-button matStepperNext (click)="addPayments()">Payment</button>
+        <button mat-button matStepperPrevious   style="background-color: #7d907d; color: rgb(12, 11, 11);"    (click)="goBack()">Back</button>
+        <button mat-button matStepperNext      style="background-color: #7d907d; color: rgb(12, 11, 11);"   (click)="addPayments()">Payment</button>
       </div>
     </form>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
+    <p style="font-size: 20px; color: rgb(225, 166, 166);   font-style: italic;">You have successfully rented the car, you can return to the home page....</p>
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+      <br>
+      <button style="background-color: #7d907d; color: rgb(12, 11, 11);"   mat-button matStepperPrevious>Back</button>
+      <button style="background-color: #7d907d; color: rgb(9, 9, 9);"        mat-button routerLink="">Home Page</button>
     </div>
   </mat-step>
 </mat-stepper>
