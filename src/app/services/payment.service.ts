@@ -16,8 +16,7 @@ export class PaymentService {
 addPayments(payment:Payment): Observable<ListResponseModel<Payment>>
 {
   let newPath = this.apiUrl + "payments/add";
-  return this.httpClient.post<ListResponseModel<Payment>>(newPath, payment);
-  
+  return this.httpClient.post<ListResponseModel<Payment>>(newPath, payment); 
 }
 
 }

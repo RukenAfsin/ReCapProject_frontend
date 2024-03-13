@@ -27,4 +27,9 @@ export class RentalService {
     return this.httpClient.post<ListResponseModel<Rental>>(newPath, rental);
   }
   
+  addRental(rental: Partial<Rental> | any): Observable<ListResponseModel<Rental>> {
+    let newPath = this.apiUrl + "rentals/add";
+    return this.httpClient.post<ListResponseModel<Rental>>(newPath, rental);
+}
+
 }

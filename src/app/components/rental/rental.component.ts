@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Rental } from '../../models/rental';
 import { RentalService } from '../../services/rental.service';
 import { ActivatedRoute } from '@angular/router';
@@ -6,107 +7,108 @@ import { Car } from '../../models/car';
 import { CarService } from '../../services/car.service';
 import { Customer } from '../../models/customer';
 import { CustomerService } from '../../services/customer.service';
-import {FormGroup, FormBuilder, FormControl,Validators} from "@angular/forms"
 import { Location } from '@angular/common';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
 
 @Component({
   selector: 'app-rental',
   templateUrl: './rental.component.html',
-  styleUrl: './rental.component.css'
+  styleUrls: ['./rental.component.css']
 })
-export class RentalComponent {
-  rentals:Rental[]=[];
-  carFilter:number=0;
-  customerFilter:number=0;
-  cars:Car[]=[];
-  customers:Customer[]=[]; 
+export class RentalComponent implements OnInit {
+  rentals: Rental[] = [];
+  carFilter: number = 0;
+  customerFilter: number = 0;
+  cars: Car[] = [];
+  customers: Customer[] = [];
   rentalData: Rental;
   currentStep: number = 0;
 
-  firstFormGroup = this._formBuilder.group({
-    firstCtrl: ['', Validators.required],
-  });
-  secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
-  });
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
   isLinear = false;
 
-  constructor(private rentalService:RentalService, 
-      private carService:CarService,
-      private customerService:CustomerService,
-      private location: Location,
-      private activatedRoute:ActivatedRoute,
-      private _formBuilder: FormBuilder,
-      private spinnerModule:MatProgressSpinnerModule){
-        this.rentalData = {
-          carId: 0,
-          customerId: 0,
-          rentDate: new Date(),
-          returnDate: new Date(), // veya null
-        } as Rental;
-  }
-  ngOnInit(): void {
-    
-    this.getCars()
-    this.getCustomers()
-    this.activatedRoute.params.subscribe(params=>{
-      if(params["customerId"])
-      {
-        this.getRentalsByCustomerId(params["customerId"])
-      }
-      else{
-        this.getRentals()
-      }
-    })
-  }
-  
-  getRentals(){
-  this.rentalService.getRentals().subscribe(response=>{
-    this.rentals=response.data
-   })
-   } 
-   
-   getRentalsByCustomerId(customerId:number){
-    this.rentalService.getRentalsByCustomer(customerId).subscribe(response=>{
-      this.rentals=response.data
-    })
-   }
+  constructor(private rentalService: RentalService,
+    private carService: CarService,
+    private customerService: CustomerService,
+    private location: Location,
+    private activatedRoute: ActivatedRoute,
+    private _formBuilder: FormBuilder) {
+      const rentalData: Partial<Rental> = {
+        carId: undefined,
+        customerId: undefined,
+        rentDate: new Date(),
+        returnDate: new Date(),
+      };
+      
 
-   checkRental(rental: Rental) {
-    this.rentalService.checkRental(rental).subscribe((response) => {
-      console.log("directed to payment page")
+    this.firstFormGroup = this._formBuilder.group({
+      carFilter: ['', Validators.required],
+      customerFilter: ['', Validators.required],
+      rentDate: ['', Validators.required],
+      returnDate: ['', Validators.required]
+    });
+
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
+  }
+
+  ngOnInit(): void {
+    this.getCars();
+    this.getCustomers();
+    this.activatedRoute.params.subscribe(params => {
+      if (params["customerId"]) {
+        this.getRentalsByCustomerId(params["customerId"]);
+      } else {
+        this.getRentals();
+      }
+    });
+  }
+
+  getRentals() {
+    this.rentalService.getRentals().subscribe(response => {
       this.rentals = response.data;
     });
   }
-  
-   getCars(){
-    this.carService.getCars().subscribe(response=>{
-      this.cars=response.data
-    })
-   }
 
-   getCustomers(){
-    this.customerService.getCustomers().subscribe(response=>{
-      this.customers=response.data
-    })
-   }
-
-   getSelectedCar(carId: number): boolean {
-    console.log();
-    return this.carFilter === carId;
+  getRentalsByCustomerId(customerId: number) {
+    this.rentalService.getRentalsByCustomer(customerId).subscribe(response => {
+      this.rentals = response.data;
+    });
   }
 
-  getSelectedCustomer(customerId: number):boolean{
-    console.log();
-    return this.customerFilter === customerId;
+  checkRental(rental: Rental) {
+    this.rentalService.checkRental(rental).subscribe((response) => {
+      console.log("directed to payment page");
+      this.rentals = response.data;
+    });
+  }
+  addRental() {
+    const newRental: Partial<Rental> = {
+      carId: this.firstFormGroup.value.carFilter,
+      customerId: this.firstFormGroup.value.customerFilter,
+      rentDate: this.firstFormGroup.value.rentDate,
+      returnDate: this.firstFormGroup.value.returnDate,
+    };
+  
+    this.rentalService.addRental(newRental).subscribe((response) => {
+      this.rentals = response.data;
+      console.log(response);
+    });
+  }
+  getCars() {
+    this.carService.getCars().subscribe(response => {
+      this.cars = response.data;
+    });
+  }
+
+  getCustomers() {
+    this.customerService.getCustomers().subscribe(response => {
+      this.customers = response.data;
+    });
   }
 
   goBack(): void {
     this.location.back();
   }
-  
-  
-  }
-  
+}
